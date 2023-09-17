@@ -14,27 +14,22 @@ const routes = [
     },
 
     {
-        path: "/card/:id",
+        path: "About",
         element: <AbautMe />,
     },
 
     {
-        path: "/create",
+        path: "/contact",
         element: <Contact />,
     },
 
     {
-        path: "/edit/:id",
+        path: "/courses",
         element: <Courses />,
     },
 
     {
-        path: "/signin",
-        element: <Home />,
-    },
-
-    {
-        path: "/login",
+        path: "/treatment",
         element: <Treatment />,
     },
 ]
