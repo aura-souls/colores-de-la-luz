@@ -1,5 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { RouterProvider } from "react-router-dom";
+import router from './application/Router'
+
+function App() {
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
+}
+
+export default App;
+
+/*import logo from './logo.svg';
+import ./App.css';
 import Router from './application/Router';
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
@@ -26,4 +40,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;*/
