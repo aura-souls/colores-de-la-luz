@@ -4,7 +4,7 @@ import Form from '../components/form/Form';
 function Contact() {
   return (
     <div>
-       <Form/>
+       
     </div>
   )
 }
