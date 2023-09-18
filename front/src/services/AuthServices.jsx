@@ -6,13 +6,20 @@ axios.defaults.headers.post['Accept'] = 'application/json';
 
 export const AuthService = () => {
     const urnSignin = 'api/register';
+    const urnLogin = 'api/login';
 
     const register = ($data) => {
         const res = axios.post(urnSignin, $data);
         return res;
     }
 
+    const login = ($data) => {
+        const res = axios.post(urnLogin, $data);
+        return res;
+    }
+
     return {
-        register
+        register,
+        login
     }
 }
