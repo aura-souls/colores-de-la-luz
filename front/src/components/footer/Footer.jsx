@@ -14,7 +14,7 @@ export default function Footer() {
       sx={{
         backgroundColor: "#AB47BC",
         color: "#fff",
-        p: 3,
+        p: 1,
         position: "fixed",
         bottom: 0,
         left: 0,
