@@ -4,7 +4,7 @@ import './background.css';
 function Background() {
       return (
 
-            <div className="ripple-background">
+            <div className="background">
               <div className="circle xxlarge shade1"></div>
               <div className="circle xlarge shade2"></div>
               <div className="circle large shade3"></div>
@@ -14,6 +14,6 @@ function Background() {
           );
         }
 
-        
+
 
 export default Background;
