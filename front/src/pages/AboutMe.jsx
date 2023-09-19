@@ -4,6 +4,7 @@ import Footer from "../components/footer/Footer";
 import Background from "../components/animation/Background";
 
 
+
 function Home() {
   return (
     <div>
