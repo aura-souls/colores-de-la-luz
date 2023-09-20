@@ -1,10 +1,12 @@
 import {React} from 'react'
-import Form from '../components/form/Form';
+import NavBar from '../components/navbar/Navbar'
+import Footer from '../components/footer/Footer'
+
 
 function Home() {
   return (
     <div>
-        <Navbar />
+        <NavBar />
 
         <Footer />
     </div>
