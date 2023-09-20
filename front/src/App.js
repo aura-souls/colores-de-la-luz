@@ -13,6 +13,7 @@ function App() {
          <Router/>
          <Footer/>
       </BrowserRouter>
+      
     </>
   )
 }
