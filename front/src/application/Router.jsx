@@ -38,6 +38,7 @@ export default router;
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home.jsx'
 import Contact from '../pages/Contact.jsx';
+import Main from '../pages/Main.jsx';
 
 function Router() {
 
