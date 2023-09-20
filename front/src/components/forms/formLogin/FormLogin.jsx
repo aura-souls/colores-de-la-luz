@@ -96,7 +96,7 @@ function FormLogin() {
                                 </Grid>
 
                                 <Grid item xs={12}>
-                                    <Button type="submit" variant="contained" color="buttoncolor" fullWidth style={{ color: 'white' }}>Enviar</Button>
+                                    <Button type="submit" variant="contained" color="buttoncolor" fullWidth style={{ color: 'white' }}>Iniciar Sesión</Button>
                                 </Grid>
                             </Grid>
                         </form>
