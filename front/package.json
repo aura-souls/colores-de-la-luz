@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.9",
+    "@mui/material": "^5.14.10",
+    "@mui/styled-engine-sc": "^5.14.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^0.27.2",
-=======
-    "bootstrap": "^5.3.2",
->>>>>>> 473b07e3cc5441924da49b967858eba71d85937c
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
     "react-bootstrap": "^2.8.0",
