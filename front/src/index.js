@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import CardMedia from './components/card/MediaCard';
+import reportWebVitals from './reportWebVitals'; 
+import Detail1 from './components/card/Detail1';
+import DetailCard2 from './components/card/DetailCard2';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+   <Detail1/> 
+   <DetailCard2/>
     <App />
-    < CardMedia />
   </React.StrictMode>
 );
 
