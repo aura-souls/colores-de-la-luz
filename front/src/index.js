@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals'; 
-import Detail1 from './components/cards/Detail1';
-import DetailCard2 from './components/cards/DetailCard2';
+import Bio from './components/bio/Bio';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Detail1/> 
-   <DetailCard2/>
+  <Bio/>
     <App />
   </React.StrictMode>
 );
