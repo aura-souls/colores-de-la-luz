@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals'; 
-import Detail1 from './components/card/Detail1';
-import DetailCard2 from './components/card/DetailCard2';
+import Detail1 from './components/cards/Detail1';
+import DetailCard2 from './components/cards/DetailCard2';
 
 
 
