@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals'; 
-import Bio from './components/bio/Bio';
-
-
+import reportWebVitals from './reportWebVitals';
+import Bio from './components/bio/Bio'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <Bio/>
     <App />
+    < Bio/>
   </React.StrictMode>
 );
 
