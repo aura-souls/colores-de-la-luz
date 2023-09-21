@@ -7,9 +7,9 @@ import ContactForm from '../components/forms/contactform/ContactForm'
 function Home() {
   return (
     <div>
-        <NavBar />
+       
         <ContactForm/>
-        <Footer />
+
     </div>
   )
 }

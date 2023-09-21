@@ -1,121 +1,149 @@
-import React from "react";
-import { TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
+import React, { useState } from "react";
 
-const labelStyle = { color: "#4A148C" };
+export default function Contact() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [comments, setComments] = useState(""); // Nuevo estado para comentarios
+  const [errors, setErrors] = useState({
+    emailError: false,
+    nameError: false,
+    phoneError: false,
+    emailMessage: "",
+    nameMessage: "",
+    phoneMessage: "",
+  });
 
+  const validateEmail = (email) => {
+    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return regex.test(email);
+  };
 
-export default function ContactForm () {
-return (
-<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>  
-<h1 style={{ color: "#4A148C" }}>Contacto</h1>  
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    // Validación del campo de nombre
+    if (name.trim() === "") {
+      setErrors({
+        ...errors,
+        nameError: true,
+        nameMessage: "El nombre es obligatorio",
+      });
+    } else {
+      setErrors({
+        ...errors,
+        nameError: false,
+        nameMessage: "",
+      });
+    }
 
-<TextField 
-id="nombre-apellidos" 
-label="Nombre y apellidos:" 
-variant="outlined" 
-style={{ width: '65%' }}
-helperText="Campo obligatorio"
-InputLabelProps={{ style: labelStyle }}
-/>
+    // Validación del campo de correo electrónico
+    if (validateEmail(email)) {
+      setErrors({
+        ...errors,
+        emailError: false,
+        emailMessage: "",
+      });
+      console.log("Email correcto");
+    } else {
+      setErrors({
+        ...errors,
+        emailError: true,
+        emailMessage: "Formato de correo electrónico incorrecto",
+      });
+    }
 
+    // Validación del campo de teléfono
+    if (phone.trim() === "") {
+      setErrors({
+        ...errors,
+        phoneError: true,
+        phoneMessage: "El teléfono es obligatorio",
+      });
+    } else {
+      setErrors({
+        ...errors,
+        phoneError: false,
+        phoneMessage: "",
+      });
+    }
+  };
 
-<TextField
-id= "email"
-label="Email"
-type="email"
-variant="outlined"
-style={{ width: '65%' }}
-helperText="Campo obligatorio"
-InputLabelProps={{ style: labelStyle }}
-/>
+  return (
+    <>
+       <h1 style={{ textAlign: 'center', color: '#4A148C' }}>Contacto</h1>
+      
+      <Box component="form" onSubmit={handleSubmit}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <TextField
+          id="name"
+          label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
+          variant="outlined"
+          style={{ width: '50%' }}
+          required
+          error={errors.nameError}
+          helperText={errors.nameMessage}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
 
-<TextField 
-id="telephone" 
-label="Teléfono" 
-variant="outlined"
-style={{ width: '65%' }}
-helperText="Campo obligatorio" 
-InputLabelProps={{ style: labelStyle }}
-/>
+        <TextField
+          id="email"
+          label={<span style={{ color: '#4A148C' }}>Email</span>}
+          type="email"
+          variant="outlined"
+          style={{ width: '50%' }}
+          required
+          error={errors.emailError}
+          helperText={errors.emailMessage}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
 
-<TextField 
-id="Comentarios" 
-label="Comentarios" 
-variant="outlined"
-style={{ width: '65%' }}
-InputLabelProps={{ style: labelStyle }}
+        <TextField
+          id="phone"
+          label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
+          variant="outlined"
+          style={{ width: '50%' }}
+          required
+          error={errors.phoneError}
+          helperText={errors.phoneMessage}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
 
-/>
+        {/* Campo de comentarios después del campo de teléfono */}
+        <TextField
+          id="comments"
+          label={<span style={{ color: '#4A148C' }}>Mensaje</span>}  
+          variant="outlined"
+          style={{ width: '50%' }}
+          multiline
+          rows={4}
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+          sx={{ marginBottom: 2 }}
+        />
+        </div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+  <Button
+    type="submit"
+    variant="outlined"
+    sx={{ mt: 2 }}
+    style={{
+      backgroundColor: "#512872",
+      color: "#F0E5D6",
+    }}
+  >
+    ENVIAR
+  </Button>
 </div>
-
-
-);
-
+      </Box>
+    </>
+  );
 }
-
-
-// import { Box, Button, TextField } from "@mui/material";
-// import { useState } from "react";
-
-// export default function Contact () {
-//     const [email,setEmail] = useState ("");
-//     const [error,setError ] = useState ({
-//         emailError: false,
-//         messaage: "",
-//     });
-
-//     const validateEmail = (email) => {
-//         const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-//         return regex.test(email);
-//     };
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault ();
-//         if (validateEmail (email)) {
-//         setError ({error:false,
-//         messaage: "",
-//     });
-               
-//         console.log ("Email correcto");
-// } else {setError ({
-//     error: true,
-//     messaage: "Formato de e-mail incorrecto",
-
-// });
-// }
-//     };
-
-//     return (
-//         <>
-//         <h1>Contacto</h1>
-//         <Box 
-//         component="form" 
-//         onSubmit={handleSubmit}
-//         >
-
-//         < TextField
-//         id="email"
-//         label="Email"
-//         type="email"
-//         variant="outlined"
-//         fullWidth
-//         required
-//         error={error.error}
-//         helperText={error.messaage}
-        
-//         value={email}
-//         onChange={(e) => setEmail (e.target.value)}
-//         />
-//                 <Button 
-//                     type="submit" 
-//                     variant="outlined"
-//                     sx={{ mt:2 }}
-//                 >
-//                     ENVIAR 
-//                 </Button>
-//             </Box>
-//         </>
-//     );
-// }
-
+    
