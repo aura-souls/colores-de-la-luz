@@ -5,7 +5,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { Box} from '@mui/material';
-
+import MujerSentada from '../../assets/images/MujerPuntos.png';
+import MujerPuntos from '../../assets/images/MujerSentada.png';
 
 
 export default function Detail1() {
@@ -15,10 +16,10 @@ export default function Detail1() {
       <Grid container spacing={4}>
         <Grid item xs={4}>
         <Box>
-          <CardMedia sx ={{ mt: 5,ml:10 , borderRadius:20}}
+          <CardMedia sx ={{ mt:5,ml:10 , borderRadius:20}}
             component="img"
             height="400"
-            image="/images/mujer-joven-meditando-chakras-su-cuerpo 1.png"
+            image={MujerPuntos}
             alt="Mujer joven trabajando sus Chakras"
           />
         </Box>
@@ -33,7 +34,6 @@ export default function Detail1() {
                 </Typography>
                   <Typography variant="body2"  sx={{  textAlign: 'justify',margin:10,color:'#6A1B9A'}}>
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id felis placerat, aliquet augue in, tempor odio. Aliquam tortor metus, aliquam a est vel, viverra suscipit nunc. Pellentesque a lectus a tortor euismod mollis a nec nulla. Nulla ligula ligula, egestas et tristique id, cursus id nibh. Suspendisse mollis porttitor magna, a venenatis mi. Sed eu tempus lectus, nec pulvinar nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc in efficitur nibh, eleifend placerat eros. Etiam id diam ullamcorper, euismod risus quis, placerat lectus. Cras ac sodales sem. Proin eros erat, congue vitae eros at, viverra pellentesque justo. Phasellus velit leo, auctor sed sagittis sit amet, tempus ac nibh.
-                    
                   </Typography>
             </CardContent>
           </Box>
@@ -43,15 +43,15 @@ export default function Detail1() {
             <CardMedia sx ={{ mt: 5,ml:10 , borderRadius:20}}
               component="img"
               height="400"
-              image="/images/mujer-meditando-fondo-abstracto-tiro-completo 1.png"
-              alt="Mujer meditando, fondo abstracto"
+              image={MujerSentada}
+              alt= "Mujer que cuida su energía"
           />
           </Box>
         </Grid>
         <Grid item xs={8}>
           <Box>
           <CardContent >
-            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', paddingTop:5, color:'#6A1B9A'}}>
+            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', paddingTop:3, color:'#6A1B9A'}}>
               Servicio
             </Typography>
            

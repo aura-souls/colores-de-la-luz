@@ -3,13 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import MujerSentada from '../../assets/images/MujerSentada';
 
 export default function MediaCard() {
   return (
     <Card sx={{ maxWidth: 300,height: 650, backgroundColor: '#F3E5F5', paddingTop:10 }}>
       <CardMedia
         sx={{ maxWidth: 250,height: 400, margin:'auto', }}
-        image='/images/mujer-joven-meditando-chakras-su-cuerpo 1.png'
+        image={MujerSentada}
         title="Mujer joven meditando, chakras y cuerpo"
        
       />

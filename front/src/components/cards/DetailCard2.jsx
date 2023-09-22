@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { Box, CardMedia } from '@mui/material';
+import MujerSol from '../../assets/images/MujerSol.png';
 
 export default function DetailCard2() {
   return (
@@ -14,7 +15,7 @@ export default function DetailCard2() {
           <CardMedia sx ={{ mt: 10, ml:10 , borderRadius:20}}
              component="img"
              height="400"
-             image="/images/mujer-sosteniendo-sus-manos-luz-sol.png"  
+             image={MujerSol}  
              alt="Mujer meditando, fondo abstracto"
           />
           </Box>
