@@ -1,16 +1,12 @@
 import {React} from 'react'
-import NavBar from '../components/navbar/Navbar'
-import Footer from '../components/footer/Footer'
+import Form from '../components/forms/Form';
 
-
-function Home() {
+function Contact() {
   return (
     <div>
-        <NavBar />
-
-        <Footer />
+        <Form/>
     </div>
   )
 }
 
-export default Home
+export default Contact
