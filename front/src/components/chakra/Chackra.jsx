@@ -1,5 +1,7 @@
 import Grid from '@mui/material/Grid';
 import React from 'react';
+import blueChackra from './assets/imges/blue-chackra.svg'
+
 
 
 function Chackra() {
@@ -7,7 +9,7 @@ function Chackra() {
     <div>
       <Grid container spacing={2}>
   <Grid item xs={2}>
-    <img src="assets/imges/foto1.svg" alt="Descripción de la imagen 1" />
+    <img src={blueChackra} alt="Descripción de la imagen 1" />
   </Grid>
   <Grid item xs={2}>
     <img src="assets/imges/foto2.svg" alt="Descripción de la imagen 2" />
