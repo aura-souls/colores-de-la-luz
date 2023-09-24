@@ -5,7 +5,7 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [comments, setComments] = useState(""); // Nuevo estado para comentarios
+  const [comments, setComments] = useState(""); 
   const [errors, setErrors] = useState({
     emailError: false,
     nameError: false,
@@ -18,6 +18,12 @@ export default function Contact() {
   const validateEmail = (email) => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return regex.test(email);
+  };
+  
+  const validatePhone = (phone) => {
+    // Expresión regular que permite el signo "+" y números
+    const regex = /^[+0-9]+$/;
+    return regex.test(phone);
   };
 
   const handleSubmit = (e) => {
@@ -61,6 +67,13 @@ export default function Contact() {
         phoneError: true,
         phoneMessage: "El teléfono es obligatorio",
       });
+
+    } else if (!validatePhone(phone)) {
+      setErrors({
+        ...errors,
+        phoneError: true,
+        phoneMessage: "Formato de teléfono incorrecto",
+      });
     } else {
       setErrors({
         ...errors,
@@ -72,10 +85,11 @@ export default function Contact() {
 
   return (
     <>
-       <h1 style={{ textAlign: 'center', color: '#4A148C' }}>Contacto</h1>
+       <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
       
       <Box component="form" onSubmit={handleSubmit}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        
         <TextField
           id="name"
           label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
@@ -86,7 +100,8 @@ export default function Contact() {
           helperText={errors.nameMessage}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          sx={{ marginBottom: 2 }}
+          sx={{ marginBottom: 2, fontFamily: 'Montserrat' }}
+          
         />
 
         <TextField
@@ -100,7 +115,7 @@ export default function Contact() {
           helperText={errors.emailMessage}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          sx={{ marginBottom: 2 }}
+          sx={{ marginBottom: 2, fontFamily: 'Montserrat' }}
         />
 
         <TextField
@@ -113,10 +128,10 @@ export default function Contact() {
           helperText={errors.phoneMessage}
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          sx={{ marginBottom: 2 }}
+          sx={{ marginBottom: 2, fontFamily: 'Montserrat' }}
         />
 
-        {/* Campo de comentarios después del campo de teléfono */}
+      
         <TextField
           id="comments"
           label={<span style={{ color: '#4A148C' }}>Mensaje</span>}  
@@ -126,7 +141,7 @@ export default function Contact() {
           rows={4}
           value={comments}
           onChange={(e) => setComments(e.target.value)}
-          sx={{ marginBottom: 2 }}
+          sx={{ marginBottom: 2, fontFamily: 'Montserrat', borderColor: '#D6F0D9' }}
         />
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -137,6 +152,7 @@ export default function Contact() {
     style={{
       backgroundColor: "#512872",
       color: "#F0E5D6",
+      fontFamily: "Montserrat",
     }}
   >
     ENVIAR
