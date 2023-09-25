@@ -1,10 +1,10 @@
 import {React} from 'react'
-import Form from '../components/forms/Form';
+import ContactForm from '../components/forms/contactform/ContactForm'
 
 function Contact() {
   return (
-    <div>
-        <Form/>
+    <div> 
+      <ContactForm/>
     </div>
   )
 }
