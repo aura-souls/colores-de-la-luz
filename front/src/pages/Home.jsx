@@ -1,9 +1,10 @@
-import React from "react";
+import {React} from 'react'
+import Point from '../components/points/Point.jsx';
 
 function Home() {
   return (
     <div>
-        Hola
+        <Point />
     </div>
   )
 }
