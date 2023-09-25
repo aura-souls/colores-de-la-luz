@@ -17,7 +17,7 @@ const pages = [
   },
   {
     title: 'Sobre mí',
-    link: '/about',
+    link: '/aboutme',
   },
   {
     title: 'Tratamientos',

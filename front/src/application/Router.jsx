@@ -4,6 +4,7 @@ import Home from '../pages/Home.jsx';
 import Contact from '../pages/Contact.jsx';
 import Main from '../pages/Main.jsx';
 import Treatment from '../pages/Treatment.jsx';
+import AboutMe from '../pages/AboutMe.jsx';
 
 function Router() {
     return (
@@ -13,6 +14,7 @@ function Router() {
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/main' element={<Main/>}/>
             <Route path='/treatment' element={<Treatment/>}/>
+            <Route path='/aboutme' element={<AboutMe/>}/>
           </Routes>
        </>
     );
