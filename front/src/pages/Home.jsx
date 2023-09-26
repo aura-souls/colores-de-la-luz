@@ -1,10 +1,10 @@
 import {React} from 'react'
-import Point from '../components/points/Point.jsx';
+import IntroHome from '../components/introHome/IntroHome.jsx';
 
 function Home() {
   return (
     <div>
-        <Point />
+        <IntroHome />      
     </div>
   )
 }
