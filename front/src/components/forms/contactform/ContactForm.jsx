@@ -1,11 +1,12 @@
-import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { Box, Button, TextField } from "@mui/material";
+import Swal from "sweetalert2";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [comments, setComments] = useState(""); 
+  const [comments, setComments] = useState("");
   const [errors, setErrors] = useState({
     emailError: false,
     nameError: false,
@@ -19,7 +20,7 @@ export default function Contact() {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return regex.test(email);
   };
-  
+
   const validatePhone = (phone) => {
     // Expresión regular que permite el signo "+" y números
     const regex = /^[+0-9]+$/;
@@ -67,7 +68,6 @@ export default function Contact() {
         phoneError: true,
         phoneMessage: "El teléfono es obligatorio",
       });
-
     } else if (!validatePhone(phone)) {
       setErrors({
         ...errors,
@@ -80,86 +80,96 @@ export default function Contact() {
         phoneError: false,
         phoneMessage: "",
       });
+
+      // Si todas las validaciones son exitosas, muestra la alerta
+      Swal.fire(
+        '¡Gracias por contactar',
+        '¡Hemos recibido tu formulario con éxito!',
+        'success',
+        {
+          customClass: {
+            confirmButton: 'btn-custom-class'
+          }
+        }
+      );      
     }
   };
 
   return (
     <>
-       <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
-      
+      <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
+
       <Box component="form" onSubmit={handleSubmit}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        
-        <TextField
-          id="name"
-          label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
-          variant="outlined"
-          style={{ width: '50%' }}
-          required
-          error={errors.nameError}
-          helperText={errors.nameMessage}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          sx={{ marginBottom: 2, fontFamily: 'Montserrat' }}
-          
-        />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-        <TextField
-          id="email"
-          label={<span style={{ color: '#4A148C' }}>Email</span>}
-          type="email"
-          variant="outlined"
-          style={{ width: '50%' }}
-          required
-          error={errors.emailError}
-          helperText={errors.emailMessage}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          sx={{ marginBottom: 2, fontFamily: 'Montserrat' }}
-        />
+          <TextField
+            id="name"
+            label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
+            variant="outlined"
+            style={{ width: '50%' }}
+            required
+            error={errors.nameError}
+            helperText={errors.nameMessage}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            sx={{ marginBottom: 2 }}
 
-        <TextField
-          id="phone"
-          label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
-          variant="outlined"
-          style={{ width: '50%' }}
-          required
-          error={errors.phoneError}
-          helperText={errors.phoneMessage}
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          sx={{ marginBottom: 2, fontFamily: 'Montserrat' }}
-        />
+          />
 
-      
-        <TextField
-          id="comments"
-          label={<span style={{ color: '#4A148C' }}>Mensaje</span>}  
-          variant="outlined"
-          style={{ width: '50%' }}
-          multiline
-          rows={4}
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
-          sx={{ marginBottom: 2, fontFamily: 'Montserrat', borderColor: '#D6F0D9' }}
-        />
+          <TextField
+            id="email"
+            label={<span style={{ color: '#4A148C' }}>Email</span>}
+            type="email"
+            variant="outlined"
+            style={{ width: '50%' }}
+            required
+            error={errors.emailError}
+            helperText={errors.emailMessage}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            sx={{ marginBottom: 2 }}
+          />
+
+          <TextField
+            id="phone"
+            label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
+            variant="outlined"
+            style={{ width: '50%' }}
+            required
+            error={errors.phoneError}
+            helperText={errors.phoneMessage}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            sx={{ marginBottom: 2 }}
+          />
+
+
+          <TextField
+            id="comments"
+            label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
+            variant="outlined"
+            style={{ width: '50%' }}
+            multiline
+            rows={4}
+            value={comments}
+            onChange={(e) => setComments(e.target.value)}
+            sx={{ marginBottom: 2 }}
+          />
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-  <Button
-    type="submit"
-    variant="outlined"
-    sx={{ mt: 2 }}
-    style={{
-      backgroundColor: "#512872",
-      color: "#F0E5D6",
-      fontFamily: "Montserrat",
-    }}
-  >
-    ENVIAR
-  </Button>
-</div>
+          <Button
+            type="submit"
+            variant="outlined"
+            sx={{ mt: 2 }}
+            style={{
+              backgroundColor: "#512872",
+              color: "#F0E5D6",
+            }}
+          >
+            ENVIAR
+          </Button>
+        </div>
       </Box>
     </>
   );
 }
-    
