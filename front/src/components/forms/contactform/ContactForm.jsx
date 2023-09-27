@@ -85,12 +85,13 @@ export default function Contact() {
       Swal.fire(
         '¡Gracias por contactar',
         '¡Hemos recibido tu formulario con éxito!',
-        'success'
-        "customClass": {
-          confirmButton: 'btn-custom-class'
+        'success',
+        {
+          customClass: {
+            confirmButton: 'btn-custom-class'
+          }
         }
-        
-      );
+      );      
     }
   };
 
