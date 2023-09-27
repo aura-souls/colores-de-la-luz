@@ -20,8 +20,8 @@ const pages = [
     link: '/aboutme',
   },
   {
-    title: 'Tratamientos',
-    link: '/treatment',
+    title: 'Terapias',
+    link: '/therapy',
   },
   {
     title: 'Contacto',
