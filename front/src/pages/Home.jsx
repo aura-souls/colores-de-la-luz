@@ -1,10 +1,10 @@
 import {React} from 'react'
-import Point from '../components/points/Point.jsx';
+import PointsComponent from '../components/pointsOrganism/PointsComponent'
 
 function Home() {
   return (
     <div>
-        <Point />
+      <PointsComponent />
     </div>
   )
 }
