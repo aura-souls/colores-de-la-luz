@@ -40,9 +40,9 @@ const Chackra = () => {
         <div key={index} onClick={(event) => handleClick(index,event)} style={{ textAlign: 'center' }}>
           {(selectedChakra === null || selectedChakra === index) && <img src={data.imageSrc} alt="Chakra images" style={{ borderRadius :10 }} />}
           {(selectedChakra === null || selectedChakra === index) && showText &&
-            <Card variant="outlined" sx={{ backgroundColor: data.backgroundColor , borderRadius :10 , marginTop :10}}>
+            <Card variant="outlined" sx={{ backgroundColor: data.backgroundColor , borderRadius :5 , marginTop :5}}>
               <CardContent>
-                <Typography sx={{ color:'#6A1B9A'}}>{data.text}</Typography>
+                <Typography sx={{ color:'#6A1B9A', margin:0.95}}>{data.text}</Typography>
               </CardContent>
             </Card>
           }
