@@ -21,7 +21,8 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="php logo" width="70"/>
  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/PhpMyAdmin_logo.svg" alt="Php My admin logo" width="70" height="40"/>
   <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" alt="Laravel logo" width="70" height="40"/>
-  <img src=" https://v4.mui.com/static/logo.png"/>
+  <img src=" ![Material UI](https://github.com/aura-souls/colores-de-la-luz/assets/132339878/2d4dd130-e8b3-4739-8d50-a98355506be5)
+"/>
   
    </div> 
 
