@@ -12,7 +12,7 @@ import MujerPuntos from '../../assets/images/MujerSentada.png';
 export default function Detail1() {
   return (
     
-    <Card sx={{ maxWidth: 900 , height:'auto',margin:'auto', backgroundColor: '#F3E5F5', margingTop:10 , margingLeft:10, borderRadius:5 }}>
+    <Card sx={{ maxWidth: 900 , height:'auto',margin:'auto', backgroundColor: '#F3E5F5', margingLeft:10, borderRadius:5 }}>
       <Grid container spacing={4}>
         <Grid item xs={4}>
         <Box>
