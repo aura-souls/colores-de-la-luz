@@ -8,11 +8,11 @@ import MujerSol from '../../assets/images/MujerSol.png';
 
 export default function DetailCard2() {
   return (
-    <Card sx={{ maxWidth: 900, height:'auto',margin:'auto', backgroundColor: '#F3E5F5', borderRadius:5, color:''}}>
+    <Card sx={{ maxWidth: 900, height:'auto',margin:'auto', backgroundColor: '#F3E5F5', borderRadius:5}}>
       <Grid container spacing={4}>
         <Grid item xs={4}>
           <Box>
-          <CardMedia sx ={{ mt: 10, ml:10 , borderRadius:20}}
+          <CardMedia sx ={{ mt: 5, ml:10 , borderRadius:20}}
              component="img"
              height="400"
              image={MujerSol}  
