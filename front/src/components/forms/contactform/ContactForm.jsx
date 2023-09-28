@@ -91,9 +91,29 @@ export default function Contact() {
             confirmButton: 'btn-custom-class'
           }
         }
-      );      
+      );
     }
   };
+
+
+  axios
+  .post("http://localhost:8000/send-mail", formData)
+  .then((response) => {
+    if (response.status === 200) {
+
+      Swal.fire(
+        "¡Gracias por contactar!",
+        "Hemos recibido tu formulario con éxito.",
+        "success"
+      );
+    } else {
+      console.error("Error al enviar el formulario.");
+    }
+  })
+  .catch((error) => {
+    console.error("Error al enviar el formulario:", error);
+  });
+}
 
   return (
     <>
@@ -172,4 +192,4 @@ export default function Contact() {
       </Box>
     </>
   );
-}
+

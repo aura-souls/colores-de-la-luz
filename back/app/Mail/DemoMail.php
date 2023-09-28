@@ -66,3 +66,4 @@ class DemoMail extends Mailable
         return [];
     }
 }
+
