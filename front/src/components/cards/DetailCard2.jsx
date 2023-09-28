@@ -29,7 +29,7 @@ export default function DetailCard2() {
             <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'justify',margin:10, color:'#6A1B9A'}}>
             IRIS,  es un método de meditación bailada que facilita la apertura mental, emocional y espiritual de cada persona a fin de liberar y sanar las diversas memorias contenidas en su cuerpo.
 
-Su propsito principal es que cada alumno consiga transitar por el camino de vida dispuesto por su corazón.
+          Su propsito principal es que cada alumno consiga transitar por el camino de vida dispuesto por su corazón.
            
             </Typography>
             </Box>
