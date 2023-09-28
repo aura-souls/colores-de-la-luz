@@ -7,6 +7,7 @@ import { Instagram, WhatsApp } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import Hidden from "@mui/material/Hidden";
 
+
 export default function Footer() {
   return (
     <Box
