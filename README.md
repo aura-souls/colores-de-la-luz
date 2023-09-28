@@ -8,7 +8,7 @@
 ***
 "The Colors of Light" is a collaborative project in which we develop a website for Lourdes de Pascual, who is a Dance Teacher – Akhasic Records Channeler – Light Healer Quantic Irdin Method. On the page you can see the treatments and courses it offers, as well as how to contact her.
 
-"Los Colores de la Luz" es un projecto colaborativo en el que desarrollamos una página web para Lourdes de Pascual, que es profesora de Danza – Canalizadora Registros Akhasicos – Sanadora de Luz Método Quantic Irdin. El objetivo de l página web es dar a conocer los tratamientos y cursos que ofrece, así como la forma de contactarla.
+"Los Colores de la Luz" es un projecto colaborativo en el que desarrollamos una página web para Lourdes de Pascual, que es profesora de Danza – Canalizadora Registros Akhasicos – Sanadora de Luz Método Quantic Irdin. El objetivo de l página web es dar a conocer los tratamientos y cursos que ofrece, así como la forma de contactar con ella.
 
 ## 💻 Technologies / Tecnologías
 ***
