@@ -5,7 +5,8 @@ import IntroHome from '../components/introHome/IntroHome.jsx';
 function Home() {
   return (
     <div>
-      <IntroHome />  
+      <IntroHome /> 
+       
       <PointsComponent />    
     </div>
   )

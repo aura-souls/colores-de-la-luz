@@ -23,11 +23,13 @@ export default function DetailCard2() {
         <Grid item xs={8}>
           <CardContent sx={{ textAlign: 'center'}}>
             <Typography gutterBottom variant="h5" component="div" sx={{paddingTop:10,color:'#6A1B9A'}}>
-              Servicio
+             Método de Meditación Bailada, IRIS
             </Typography>
             <Box>
             <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'justify',margin:10, color:'#6A1B9A'}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id felis placerat, aliquet augue in, tempor odio. Aliquam tortor metus, aliquam a est vel, viverra suscipit nunc. Pellentesque a lectus a tortor euismod mollis a nec nulla. Nulla ligula ligula, egestas et tristique id, cursus id nibh. Suspendisse mollis porttitor magna, a venenatis mi. Sed eu tempus lectus, nec pulvinar nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc in efficitur nibh, eleifend placerat eros. Etiam id diam ullamcorper, euismod risus quis, placerat lectus. Cras ac sodales sem. Proin eros erat, congue vitae eros at, viverra pellentesque justo. Phasellus velit leo, auctor sed sagittis sit amet, tempus ac nibh.
+            IRIS,  es un método de meditación bailada que facilita la apertura mental, emocional y espiritual de cada persona a fin de liberar y sanar las diversas memorias contenidas en su cuerpo.
+
+          Su propsito principal es que cada alumno consiga transitar por el camino de vida dispuesto por su corazón.
            
             </Typography>
             </Box>

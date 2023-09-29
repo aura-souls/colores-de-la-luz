@@ -1,36 +1,41 @@
 import * as React from 'react';
+import { Box, Avatar, Pagination } from '@mui/material';
+import  FotoLourdes from  "../../assets/images/LourdesPascua.jpg";
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { Box, Avatar } from '@mui/material';
-import  FotoLourdes from  "../../assets/images/fotoLourdes.jpg";
+import { styled } from '@mui/system';
 
-export default function Bio() {
+
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.secondary.main,
+}));
+
+export default function Bio(){
+  
   return (
-    <Grid container spacing={12} sx={{ maxWidth: 1000, margin:'auto'}}>
+    <Grid container spacing={12} sx={{ maxWidth: 1200, margin:'auto'}}>
       <Grid item xs={4}>
         <Box sx={{ mt: 10, mr:25 }}>
           <Avatar alt="Lourdes Pascua" src={FotoLourdes} sx={{ width: 300, height: 300 }} />
         </Box>
       </Grid>
       <Grid item xs={8}>
-        <Box sx={{ textAlign: 'justify',margin:5, color:'#6A1B9A', overflow: 'auto', maxHeight: 350 , mr:20}}>
-          <Typography gutterBottom variant="h5" component="div" sx={{paddingTop:10,color:'#6A1B9A'}}>
-            Hola! Soy Lourdes Pascua
+        <Box sx={{ textAlign: 'justify',margin:5, maxHeight: 350 , mr:20, color:'#6A1B9A'}}>
+          <Typography gutterBottom variant="h5" component="div" sx={{ mb:5}}>
+            Hola! Soy Lourdes Pascual
           </Typography>
           <Typography variant="body2"> Profesora de danza</Typography>
           <Typography variant="body2" > Kanalizadora de Registros Akhasicos</Typography>
           <Typography variant="body2" >Sanadora de Luz Método Quantic Irdin</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'justify', color:'#6A1B9A', mt:3}}>
-            Desde temprana edad, mi pasión por la danza se manifestó a los tres años, y a los trece años ya tenía claro mi objetivo: convertirme en Profesora de Danza. A los 18 años, comencé a compartir mis conocimientos al impartir clases, mientras continuaba mi formación en el mundo de la danza. A lo largo de mi carrera, he tenido la oportunidad de trabajar en diversos contextos y, en el año 2001, di un paso importante al fundar mi propio Estudio de Danza.
-            <Box component="br" />
-            Durante mi trayectoria, experimenté un profundo crecimiento personal. En el año 2012, inicié un viaje hacia la conexión con mi ser interior y la exploración de la multidimensionalidad. Esta experiencia transformadora me llevó a colaborar con Ana María Carulla en la creación del método "Iris Meditación Bailada" en 2014. Este método representa un enfoque de aprendizaje que parte desde el cuerpo, permitiéndonos liberar lo que ya no necesitamos y que nos limita. A través de esta liberación, logramos conectar con nuestro ser más profundo, nuestro alma. Entiendo que es solo desde este estado de conciencia que podemos manifestar plenamente nuestros dones y potencial.
-            <Box component="br" />
-            Mi viaje en el mundo de la danza y la conexión con el alma me ha permitido adquirir una perspectiva única y enriquecedora que aplico en mi enseñanza y en el desarrollo del método "Iris Meditación Bailada". Estoy comprometida con ayudar a otros a descubrir su propio potencial y a conectar con su verdadera esencia a través de la danza y la conciencia corporal.
-            <Box component="br" />
-            A lo largo de los años, he acumulado una amplia experiencia y conocimiento en el mundo de la danza y el desarrollo personal. Estoy emocionada de seguir compartiendo mi pasión y mi visión con otros y de contribuir al crecimiento y la transformación de quienes buscan conectar con su alma a través de la danza.                                            
+          Empecé a bailar a los 3 años y a los trece años ya sabía que quería ser Profesora de Danza, a los 18 años empiezo a dar clases, mientras sigo formándome. Después de trabajar en varios sitios, en el año 2001monto mi propio Estudio de Danza y
+          lo cierro en el año 2020. Durante este periodo en el año 2012  empiezo abrir mi conexión con el Alma y con la  Multidimensionalidad y en el año 2014 empiezo a crear con Ana María Carulla el método Iris Meditación Bailada, un aprendizaje de conexión desde el cuerpo para soltar todo aquello que no necesitamos  y nos limita y así poder conectar desde el Alma, sólo desde ese estado de conciencia podemos manifestar nuestros dones.
           </Typography>
+          
         </Box>
       </Grid>
     </Grid>
   );
-}
+  } 
