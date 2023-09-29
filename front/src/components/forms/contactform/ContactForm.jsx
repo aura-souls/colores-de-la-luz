@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import Swal from "sweetalert2";
+import axios from "axios";
+import 'leaflet/dist/leaflet.css';
+
+
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -52,7 +56,6 @@ export default function Contact() {
         emailError: false,
         emailMessage: "",
       });
-      console.log("Email correcto");
     } else {
       setErrors({
         ...errors,
@@ -81,19 +84,42 @@ export default function Contact() {
         phoneMessage: "",
       });
 
-      // Si todas las validaciones son exitosas, muestra la alerta
+      // Crear un objeto con los datos para enviar al servidor
+      const formData = {
+        name: name,
+        email: email,
+        phone: phone,
+        comments: comments,
+      };
+
       Swal.fire(
         '¡Gracias por contactar',
         '¡Hemos recibido tu formulario con éxito!',
-        'success',
-        {
-          customClass: {
-            confirmButton: 'btn-custom-class'
+        'success'
+
+
+      );
+      // Enviar los datos al servidor usando Axios
+      axios
+        .get("http://localhost:8000/send-mail", formData)
+        .then((response) => {
+          if (response.status === 200) {
+            // Si la solicitud es exitosa, muestra una alerta
+            Swal.fire(
+              "¡Gracias por contactar!",
+              "Hemos recibido tu formulario con éxito.",
+              "success"
+            );
+          } else {
+            console.error("Error al enviar el formulario.");
           }
-        }
-      );      
+        })
+        .catch((error) => {
+          console.error("Error al enviar el formulario:", error);
+        });
     }
   };
+
 
   return (
     <>
@@ -172,4 +198,5 @@ export default function Contact() {
       </Box>
     </>
   );
-}
+
+};
