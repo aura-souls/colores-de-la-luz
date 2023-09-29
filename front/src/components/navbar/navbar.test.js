@@ -12,7 +12,7 @@ test('should render', () => {
     );
     expect(getByText('Inicio')).toBeTruthy();
     expect(getByText('Sobre mí')).toBeTruthy();
-    expect(getByText('Tratamientos')).toBeTruthy();
+    expect(getByText('Terapias')).toBeTruthy();
     expect(getByText('Contacto')).toBeTruthy();
   });
   test('should render the logo', () => {
