@@ -18,13 +18,13 @@ export default function Bio(){
     <Grid container spacing={12} sx={{ maxWidth: 1200, margin:'auto'}}>
       <Grid item xs={4}>
         <Box sx={{ mt: 10, mr:25 }}>
-          <Avatar alt="Lourdes Pascua" src={FotoLourdes} sx={{ width: 300, height: 300 }} />
+          <Avatar alt="Lourdes de Pascua" src={FotoLourdes} sx={{ width: 300, height: 300 }} />
         </Box>
       </Grid>
       <Grid item xs={8}>
         <Box sx={{ textAlign: 'justify',margin:5, maxHeight: 350 , mr:20, color:'#6A1B9A'}}>
           <Typography gutterBottom variant="h5" component="div" sx={{ mb:5}}>
-            Hola! Soy Lourdes Pascual
+            Hola! Soy Lourdes de Pascual Grifé
           </Typography>
           <Typography variant="body2"> Profesora de danza</Typography>
           <Typography variant="body2" > Kanalizadora de Registros Akhasicos</Typography>

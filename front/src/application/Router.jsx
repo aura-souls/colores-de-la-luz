@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home.jsx';
 import Contact from '../pages/Contact.jsx';
-import Treatment from '../pages/Treatment.jsx';
+import Therapy from '../pages/Therapy.jsx';
 import AboutMe from '../pages/AboutMe.jsx';
 import AdminArea from '../pages/adminPages/AdminArea.jsx';
 import PrivateRegister from '../pages/adminPages/PrivateRegister.jsx';
@@ -15,7 +15,7 @@ function Router() {
           <Routes>
             <Route path='/' element={<Home/>}/> 
             <Route path='/contact' element={<Contact/>}/>
-            <Route path='/treatment' element={<Treatment/>}/>
+            <Route path='/therapy' element={<Therapy/>}/>
             <Route path='/aboutme' element={<AboutMe/>}/>
             <Route path='/area-de-administrador' element={<AdminArea/>}/>
             <Route element={<ProtectedRoute isAllowed={!!localStorage.getItem('auth_token')}/>}>
