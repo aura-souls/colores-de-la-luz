@@ -9,6 +9,7 @@ import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import logo from '../../assets/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
+import AdminMenu from './adminMenu/AdminMenu';
 
 const pages = [
   {
@@ -63,6 +64,7 @@ function NavBar() {
                 {page.title}
               </Button>
             ))}
+            <AdminMenu/>
           </Box>
 
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
@@ -72,7 +74,7 @@ function NavBar() {
               aria-label="menu"
               onClick={() => setOpenDrawer(true)}
             >
-              <MenuIcon />
+              <MenuIcon />  
             </IconButton>
             <Drawer
               anchor="right"
@@ -97,12 +99,14 @@ function NavBar() {
                     {page.title}
                   </Button>
                 ))}
+                <AdminMenu/>
               </Box>
             </Drawer>
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    
+    </AppBar>  
   );
 }
 

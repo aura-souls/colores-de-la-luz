@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { AuthService } from '../../../services/AuthServices';
+import React, { useEffect, useState } from 'react'
+import { AuthService } from '../../../../services/AuthServices';
 import { Grid, TextField, Button, Card, CardContent, Typography, Dialog, DialogTitle, DialogContent, DialogActions, createTheme, ThemeProvider } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
@@ -14,30 +14,37 @@ const theme = createTheme({
     }
 }) 
 
-function FormSignin() {
-    
-    const [register, setRegister] = useState({
-        name: '',
+function LoginForm() {
+
+    const [login, setLogin] = useState({
         email: '',
         password: ''
-    });
+    })
     const [alert, setAlert] = useState(''); 
     const [openAlert, setOpenAlert] = useState(false);
-
+    const [redirectToAdminProfile, setRedirectToAdminProfile] = useState(false);
+    
     const auth = AuthService();
 
     const handleOnChange = (e) => {
         e.persist();
         const { name, value } = e.target;
-        setRegister({...register, [name]: value});
-    }
+        setLogin({...login, [name]:value})
+    };
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        if (!openAlert && localStorage.getItem('auth_token')) {
+            window.open('/perfil-del-administrador', '_self');
+        }
+    }, [openAlert]); 
+
+    const handleOnSubmit = (e) => {
         e.preventDefault();
-        auth.register(register).then(res => {
+        auth.login(login).then(res => {
+            localStorage.setItem('auth_token', res.data.token);
             setAlert(res.data.msg);
             setOpenAlert(true);
-            setRegister({
+            setLogin({
                 name: '',
                 email: '',
                 password: ''
@@ -50,34 +57,17 @@ function FormSignin() {
     };
 
   return (
-    <div> 
+    <div>
         <ThemeProvider theme={theme}>
             <Grid>
                 <Card style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}>
                     <CardContent>
-                        <Typography gutterBottom variant="h5" style={{ textAlign: 'center', color: '#4A148C' }}>REGISTRO DE USUARIO</Typography> 
+                        <Typography gutterBottom variant="h5" style={{ textAlign: 'center', color: '#4A148C' }}>ACCESO DE USUARIO</Typography> 
 
                         <Typography variant="body2" color="textSecondary" component="p" gutterBottom>*** Este formulario solo está disponible para el administrador</Typography>
 
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleOnSubmit}>
                             <Grid container spacing={1}>
-                                <Grid item xs={12}>
-                                    <TextField 
-                                    type="text" 
-                                    placeholder="Introduzca un nombre"
-                                    label="Nombre y Apellidos" 
-                                    variant="outlined" 
-                                    fullWidth 
-                                    required 
-                                    name='name' 
-                                    onChange={handleOnChange} 
-                                    value={register.name}
-                                    color='inputborder'
-                                    InputLabelProps={{
-                                        style: { color: '#4A148C' } 
-                                    }}/>
-                                </Grid>
-
                                 <Grid item xs={12}>
                                     <TextField 
                                     type="email" 
@@ -88,7 +78,7 @@ function FormSignin() {
                                     required 
                                     name='email' 
                                     onChange={handleOnChange} 
-                                    value={register.email} 
+                                    value={login.email} 
                                     color='inputborder'
                                     InputLabelProps={{
                                         style: { color: '#4A148C' } 
@@ -105,7 +95,7 @@ function FormSignin() {
                                     required 
                                     name='password' 
                                     onChange={handleOnChange} 
-                                    value={register.password}
+                                    value={login.password}
                                     color='inputborder'
                                     InputLabelProps={{
                                         style: { color: '#4A148C' } 
@@ -113,7 +103,7 @@ function FormSignin() {
                                 </Grid>
 
                                 <Grid item xs={12}>
-                                    <Button type="submit" variant="contained" color="buttoncolor" fullWidth style={{ color: 'white' }}>Enviar</Button>
+                                    <Button type="submit" variant="contained" color="buttoncolor" fullWidth style={{ color: 'white' }}>Iniciar Sesión</Button>
                                 </Grid>
                             </Grid>
                         </form>
@@ -136,4 +126,4 @@ function FormSignin() {
   )
 }
 
-export default FormSignin
+export default LoginForm
