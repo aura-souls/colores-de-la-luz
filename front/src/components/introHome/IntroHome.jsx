@@ -11,7 +11,7 @@ function IntroHome() {
       </Typography>
       <Typography variant="body1" align="center" >
         En el Cuerpo Humano, tienes unos centros energéticos,{<br />} llamados chakras  donde es importantísimo mantenerlos en armonía ya que si están bloqueados nuestra vida también lo estará.{<br />}
-        Cada centro de energía tiene un color y un poder.
+        Cada centro de energía tiene un color y un poder. Empieza todo en el chakra rojo posicionado en el sacro y acaba en el violeta posicionado en la cabeza.
       </Typography>
     </Box>
   );

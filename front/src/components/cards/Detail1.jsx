@@ -29,7 +29,7 @@ export default function Detail1() {
           <Box>
             <CardContent sx={{ textAlign: 'center'}}>
             
-                <Typography gutterBottom variant="h5" component="div"sx={{ paddingTop:5,color:'#6A1B9A'}}>
+                <Typography gutterBottom variant="h5" component="div"sx={{ paddingTop:10,color:'#6A1B9A'}}>
                 Método de Sanación Irdin
                 </Typography>
                   <Typography variant="body2"  sx={{  textAlign: 'justify',margin:10,color:'#6A1B9A'}}>
@@ -51,14 +51,14 @@ export default function Detail1() {
         <Grid item xs={8}>
           <Box>
           <CardContent >
-            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', paddingTop:3, color:'#6A1B9A'}}>
+            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', paddingTop:3,  color:'#6A1B9A'}}>
               Registros Akáshicos
             </Typography>
            
             <Typography variant="body2" sx={{ textAlign: 'justify',margin:10,color:'#6A1B9A'}}>
             
-          Los Registros Akáshicos es la comunicación con el Alma. El canalizador recibe la información o la energía de la realidad multidimensional, Guías, Seres de Luz, Ángeles etc.
-          En mi caso me suelen dar aquello que necesita la persona para evolucionar en ese momento.
+              Los Registros Akáshicos es la comunicación con el Alma. El canalizador recibe la información o la energía de la realidad multidimensional, Guías, Seres de Luz, Ángeles etc.
+              En mi caso me suelen dar aquello que necesita la persona para evolucionar en ese momento.
 
             </Typography>
           </CardContent>
