@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Avatar, Pagination } from '@mui/material';
+import { Box, Avatar } from '@mui/material';
 import  FotoLourdes from  "../../assets/images/LourdesPascua.jpg";
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -13,7 +13,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 export default function Bio(){
-  
+
   return (
     <Grid container spacing={12} sx={{ maxWidth: 1200, margin:'auto'}}>
       <Grid item xs={4}>
@@ -33,9 +33,9 @@ export default function Bio(){
           Empecé a bailar a los 3 años y a los trece años ya sabía que quería ser Profesora de Danza, a los 18 años empiezo a dar clases, mientras sigo formándome. Después de trabajar en varios sitios, en el año 2001monto mi propio Estudio de Danza y
           lo cierro en el año 2020. Durante este periodo en el año 2012  empiezo abrir mi conexión con el Alma y con la  Multidimensionalidad y en el año 2014 empiezo a crear con Ana María Carulla el método Iris Meditación Bailada, un aprendizaje de conexión desde el cuerpo para soltar todo aquello que no necesitamos  y nos limita y así poder conectar desde el Alma, sólo desde ese estado de conciencia podemos manifestar nuestros dones.
           </Typography>
-          
+
         </Box>
       </Grid>
     </Grid>
   );
-  } 
+  }

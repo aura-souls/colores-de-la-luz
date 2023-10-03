@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\WhatsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +20,3 @@ Route::get('/', function () {
 });
 
 
-
-
-Route::get('send-mail', [MailController::class, 'index']);
-
-Route::get('send-message', [WhatsController::class, 'sendMessages']);

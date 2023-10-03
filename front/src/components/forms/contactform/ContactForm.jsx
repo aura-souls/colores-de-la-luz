@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import Swal from "sweetalert2";
-import axios from "axios";
-import 'leaflet/dist/leaflet.css';
-
-
+import { sendMessage } from "../../../services/WhatService";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -92,19 +89,10 @@ export default function Contact() {
         comments: comments,
       };
 
-      Swal.fire(
-        '¡Gracias por contactar',
-        '¡Hemos recibido tu formulario con éxito!',
-        'success'
-
-
-      );
-      // Enviar los datos al servidor usando Axios
-      axios
-        .get("http://localhost:8000/send-mail", formData)
+      // Llamar a la función del servicio para enviar el mensaje
+      sendMessage(formData)
         .then((response) => {
           if (response.status === 200) {
-            // Si la solicitud es exitosa, muestra una alerta
             Swal.fire(
               "¡Gracias por contactar!",
               "Hemos recibido tu formulario con éxito.",
@@ -119,7 +107,6 @@ export default function Contact() {
         });
     }
   };
-
 
   return (
     <>
@@ -169,7 +156,6 @@ export default function Contact() {
             sx={{ marginBottom: 2 }}
           />
 
-
           <TextField
             id="comments"
             label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
@@ -198,5 +184,4 @@ export default function Contact() {
       </Box>
     </>
   );
-
-};
+}
