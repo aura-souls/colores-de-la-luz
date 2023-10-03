@@ -8,6 +8,7 @@ import green from '../../assets/images/green.png';
 import orange from '../../assets/images/orange.png';
 import yellow from '../../assets/images/yellow.png';
 import red from '../../assets/images/red.png';
+import './points.css';
 
 const Chackra = () => {
   const chakrasData = [ 
@@ -17,12 +18,7 @@ const Chackra = () => {
     { imageSrc: green, text: 'Anahata “Yo Amo”, si no está equilibrado sentimos Tristeza.', backgroundColor: 'rgba(160, 209, 102, 0.15)'},
     { imageSrc: celeste, text: 'Vishuddha“ Yo Expreso”si no está equilibrado nos Mentimos.', backgroundColor: 'rgba(50, 202, 235, 0.15)'},
     { imageSrc: blue, text: 'Ajna “Yo intuyo” si no está equilibrado nos estamos negando.', backgroundColor: 'rgba(54, 139, 193, 0.15)' },
-    { imageSrc: violet, text: 'Sahastrara “Yo Soy” si no está equilibrado estamos viviendo en el Control Mental', backgroundColor: 'rgba(203, 169, 205, 0.15)' },
-   
-    
-
-   
-   
+    { imageSrc: violet, text: 'Sahastrara “Yo Soy” si no está equilibrado estamos viviendo en el Control Mental', backgroundColor: 'rgba(203, 169, 205, 0.15)' }, 
     
   ];
   
@@ -41,14 +37,14 @@ const Chackra = () => {
   }
   
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '5px' }}>
+    <div className="chakra-grid" style={{ display: 'flex', justifyContent: 'center', margin:'5rem'}}>
       {chakrasData.map((data, index) => (
-        <div key={index} onClick={(event) => handleClick(index,event)} style={{ textAlign: 'center' }}>
-          {(selectedChakra === null || selectedChakra === index) && <img src={data.imageSrc} alt="Chakra images" style={{marginLeft:14, marginTop:10, width: 100, height:100}} />}
+        <div key={index} onClick={(event) => handleClick(index,event)} style={{ textAlign: 'center',}}>
+          {(selectedChakra === null || selectedChakra === index) && <img src={data.imageSrc} alt="Chakra images" style={{marginLeft:14, marginRight:14, marginTop:10, width: 100, height:100,boxShadow: '1px 3px 4px gray', borderRadius:'50px'}} />}
           {(selectedChakra === null || selectedChakra === index) && showText &&
-            <Card variant="outlined" sx={{ backgroundColor: data.backgroundColor , borderRadius:6 , marginTop:6, }}>
+            <Card variant="outlined" sx={{ backgroundColor: data.backgroundColor , borderRadius:6 , marginTop:6, height:180, overflowY:'no-scroll',}} className="fade-in">
               <CardContent>
-                <Typography sx={{ color:'#6A1B9A'}}>{data.text}</Typography>
+                <Typography sx={{ color:'#6A1B9A', pt:'1.25rem',}}>{data.text}</Typography>
               </CardContent>
             </Card>
           }
@@ -57,4 +53,5 @@ const Chackra = () => {
     </div>
   )
 }
+
 export default Chackra;
