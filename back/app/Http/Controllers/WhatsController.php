@@ -12,7 +12,7 @@ class WhatsController extends Controller
     {
         try {
             $token =
-            'EAAMSbNtOGW0BO2cIVSMOdsXMUPgJ2CvQS3Bng8QnRBWZCZBzZBstg0yNVIDn0m1RSTLMYehxNML1FkOKN2bP8u2EigGZAfZCSUWvA79gYLVMwObrtdhV3QqpfLHvGiR2HHmKusXfDVNrZCduaRoFh0lh0TktzQXWIp6i9wK2bMBJ0g4TUrgtEspt2vajmPGCRvicZBXVRXDwK1W4OMbp0nhwhGHjCadPI24tgEZD';
+            'EAAOxZAdY7CCUBO3ImwvLfOAVrRRkKUMs7hZBBckBtyBWYIYwxZCwKSz0myoguLOaZAe9BMYJ0GjbZBPEHkbIKJnUXNNpUlv1vSbPZCQZBA3I0JSGZBWkkGjv0Wt2LnwIGKtZBmze1dxK9Ip6pr6IhLxXChwsfaxVMVps8mmZAubgMXBhfY25buqOmpklw5PHZAZCTGZBwFx9gXFFrC0JcPXW8aL0ZD';
             $phoneId = '123142900888924';
             $version = 'v17.0';
             $payload = [
@@ -20,9 +20,9 @@ class WhatsController extends Controller
                 'to' => '34684163197',
                 'type' => 'template',
                 'template' => [
-                    'name' => 'hello_world',
+                    'name' => 'saludo_inicial',
                     'language' => [
-                        'code' => 'en_US',
+                        'code' => 'es_ES',
                     ],
                 ],
             ];
