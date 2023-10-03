@@ -22,3 +22,5 @@ Route::get('/', function () {
 
 
 Route::get('send-mail', [MailController::class, 'index']);
+
+Route::get('send-message', [WhatsController::class, 'sendMessages']);
