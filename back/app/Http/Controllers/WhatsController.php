@@ -11,13 +11,12 @@ class WhatsController extends Controller
     public function sendMessages()
     {
         try {
-            $token =
-            'EAAOxZAdY7CCUBOy6OlbP0k6yXmYxOpMxjWoB3bCcyfSI0BiZAyAmaKnf9pae8YLDIeqoOZBDCnl2nlDHW8oS71VWZBiu3flf5x00NLc88homqtWEG7qTdwAnyUvsMN4aBHsU1tP6ZAZAfJZCKgkTXi9Hh1cqVYajMRMZBxF97taAQNpuLlQCPaBSyzx9ZBYTQLA5gR7QybkkNup3KUWUb3QuR';
-            $phoneId = '123142900888924';
+            $whatsapp_token = env('WHATSAPP_TOKEN');
+            $whatsapp_phone_id = env('WHATSAPP_PHONE_ID');
             $version = 'v17.0';
             $payload = [
                 'messaging_product' => 'whatsapp',
-                'to' => '34684163197',
+                'to' => env('WHATSAPP_TO_NUMBER'),
                 'type' => 'template',
                 'template' => [
                     'name' => 'saludo_inicial',
@@ -28,7 +27,7 @@ class WhatsController extends Controller
             ];
 
 
-            $message = Http::withToken($token)->post('https://graph.facebook.com/' . $version . '/' . $phoneId . '/messages', $payload)->throw()->json();
+            $message = Http::withToken($whatsapp_token)->post('https://graph.facebook.com/' . $version . '/' . $whatsapp_phone_id . '/messages', $payload)->throw()->json();
 
             return response()->json([
                 'success' => true,
@@ -42,6 +41,3 @@ class WhatsController extends Controller
         }
     }
 }
-
-
-
