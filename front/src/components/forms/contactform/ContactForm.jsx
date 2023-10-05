@@ -89,6 +89,13 @@ export default function Contact() {
         comments: comments,
       };
 
+      Swal.fire(
+        '¡Gracias por contactar',
+        '¡Hemos recibido tu formulario con éxito!',
+        'success'
+      );
+
+
       // Llamar a la función del servicio para enviar el mensaje
       sendMessage(formData)
         .then((response) => {
@@ -120,6 +127,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.nameError}
             helperText={errors.nameMessage}
@@ -135,6 +143,7 @@ export default function Contact() {
             type="email"
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.emailError}
             helperText={errors.emailMessage}
@@ -148,6 +157,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.phoneError}
             helperText={errors.phoneMessage}
@@ -161,8 +171,9 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             multiline
-            rows={4}
+            rows={3}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
             sx={{ marginBottom: 2 }}
