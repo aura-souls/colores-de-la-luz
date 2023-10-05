@@ -35,3 +35,4 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 Route::get('send-mail', [MailController::class, 'index']);
 
 Route::post('send-message', [WhatsController::class, 'sendMessages']);
+

@@ -108,6 +108,26 @@ export default function Contact() {
     }
   };
 
+  try {
+    const response = await fetch('/api/enviar-formulario', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      // Redirige a la página de agradecimiento o muestra un mensaje de éxito
+      console.log('¡Formulario enviado con éxito!');
+      } else {
+      console.error('Error al enviar el formulario.');
+      }
+      } catch (error) {
+    console.error('Error en la solicitud:', error);
+  }
+};
+
   return (
     <>
       <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
