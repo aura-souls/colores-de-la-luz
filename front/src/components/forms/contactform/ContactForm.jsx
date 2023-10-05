@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
 import 'leaflet/dist/leaflet.css';
-
-
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -20,13 +18,14 @@ export default function Contact() {
     phoneMessage: "",
   });
 
+  const [checkedA, setCheckedA] = useState(false);
+
   const validateEmail = (email) => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return regex.test(email);
   };
 
   const validatePhone = (phone) => {
-    // Expresión regular que permite el signo "+" y números
     const regex = /^[+0-9]+$/;
     return regex.test(phone);
   };
@@ -34,7 +33,6 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validación del campo de nombre
     if (name.trim() === "") {
       setErrors({
         ...errors,
@@ -49,7 +47,6 @@ export default function Contact() {
       });
     }
 
-    // Validación del campo de correo electrónico
     if (validateEmail(email)) {
       setErrors({
         ...errors,
@@ -64,7 +61,6 @@ export default function Contact() {
       });
     }
 
-    // Validación del campo de teléfono
     if (phone.trim() === "") {
       setErrors({
         ...errors,
@@ -84,7 +80,6 @@ export default function Contact() {
         phoneMessage: "",
       });
 
-      // Crear un objeto con los datos para enviar al servidor
       const formData = {
         name: name,
         email: email,
@@ -96,15 +91,12 @@ export default function Contact() {
         '¡Gracias por contactar',
         '¡Hemos recibido tu formulario con éxito!',
         'success'
-
-
       );
-      // Enviar los datos al servidor usando Axios
+   
       axios
         .get("http://localhost:8000/send-mail", formData)
         .then((response) => {
           if (response.status === 200) {
-            // Si la solicitud es exitosa, muestra una alerta
             Swal.fire(
               "¡Gracias por contactar!",
               "Hemos recibido tu formulario con éxito.",
@@ -120,10 +112,9 @@ export default function Contact() {
     }
   };
 
-
   return (
     <>
-      <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
+      <h1 style={{ textAlign: 'center', color: '#4A148C', marginBottom: '20px', marginTop: '25px' }}>Contacto</h1>
 
       <Box component="form" onSubmit={handleSubmit}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -133,13 +124,13 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.nameError}
             helperText={errors.nameMessage}
             value={name}
             onChange={(e) => setName(e.target.value)}
             sx={{ marginBottom: 2 }}
-
           />
 
           <TextField
@@ -148,6 +139,7 @@ export default function Contact() {
             type="email"
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.emailError}
             helperText={errors.emailMessage}
@@ -161,6 +153,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.phoneError}
             helperText={errors.phoneMessage}
@@ -169,27 +162,34 @@ export default function Contact() {
             sx={{ marginBottom: 2 }}
           />
 
-
           <TextField
             id="comments"
             label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small" 
             multiline
-            rows={4}
+            rows={3}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
             sx={{ marginBottom: 2 }}
           />
+
+          <FormGroup row>
+            <FormControlLabel
+              control={<Checkbox checked={checkedA} onChange={(e) => setCheckedA(e.target.checked)} name="checkedA" />}
+              label={<span style={{ color: "#512872" }}>Acepto recibir información vía whatsapp o e-mail</span>} />
+            
+          </FormGroup>
         </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <Button
             type="submit"
             variant="outlined"
             sx={{ mt: 2 }}
             style={{
-              backgroundColor: "#512872",
-              color: "#F0E5D6",
+            backgroundColor: "#512872",
+            color: "#F0E5D6",
             }}
           >
             ENVIAR
@@ -198,5 +198,4 @@ export default function Contact() {
       </Box>
     </>
   );
-
 };
