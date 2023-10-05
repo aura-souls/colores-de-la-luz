@@ -114,7 +114,7 @@ export default function Contact() {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center', color: '#4A148C', marginBottom: '20px' }}>Contacto</h1>
+      <h1 style={{ textAlign: 'center', color: '#4A148C', marginBottom: '20px', marginTop: '25px' }}>Contacto</h1>
 
       <Box component="form" onSubmit={handleSubmit}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
