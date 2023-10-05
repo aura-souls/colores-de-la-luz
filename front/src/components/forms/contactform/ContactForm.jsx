@@ -92,7 +92,7 @@ export default function Contact() {
         '¡Hemos recibido tu formulario con éxito!',
         'success'
       );
-   
+
       axios
         .get("http://localhost:8000/send-mail", formData)
         .then((response) => {
@@ -111,6 +111,25 @@ export default function Contact() {
         });
     }
   };
+
+
+   // Llamar a la función del servicio para enviar el mensaje
+   sendMessage(formData)
+   .then((response) => {
+     if (response.status === 200) {
+       Swal.fire(
+         "¡Gracias por contactar!",
+         "Hemos recibido tu formulario con éxito.",
+         "success"
+       );
+     } else {
+       console.error("Error al enviar el formulario.");
+     }
+   })
+   .catch((error) => {
+     console.error("Error al enviar el formulario:", error);
+   });
+}
 
   return (
     <>
@@ -167,7 +186,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
             variant="outlined"
             style={{ width: '50%' }}
-            size="small" 
+            size="small"
             multiline
             rows={3}
             value={comments}
@@ -179,7 +198,7 @@ export default function Contact() {
             <FormControlLabel
               control={<Checkbox checked={checkedA} onChange={(e) => setCheckedA(e.target.checked)} name="checkedA" />}
               label={<span style={{ color: "#512872" }}>Acepto recibir información vía whatsapp o e-mail</span>} />
-            
+
           </FormGroup>
         </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
