@@ -20,5 +20,9 @@ Route::get('/', function () {
 
 
 
+Route::post('send-message', [WhatsController::class, 'sendMessages']);
 
-Route::get('send-mail', [MailController::class, 'index']);
+Route::post('webhook', [WhatsController::class, 'verifyWebhook']);
+
+
+//Route::get('send-mail', [MailController::class, 'index']);

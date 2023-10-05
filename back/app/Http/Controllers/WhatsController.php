@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Exception;
+use PhpParser\Node\Stmt\TryCatch;
 
 class WhatsController extends Controller
 {
@@ -34,6 +35,26 @@ class WhatsController extends Controller
                 'data' => $message,
             ], 200);
         } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'data' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function verifyWebhook (Request, $request)
+    {
+        try {
+            $token = 'aurasouls23';
+            $query = $request->query();
+
+            return response()->json([
+                'success' => true,
+                'data' => $message,
+            ], 200);
+
+
+        } catch (Exeption $e) {
             return response()->json([
                 'success' => false,
                 'data' => $e->getMessage(),
