@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/images/logo-lourdes.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import AdminMenu from './adminMenu/AdminMenu';
 
@@ -22,7 +22,7 @@ const pages = [
   },
   {
     title: 'Terapias',
-    link: '/therapy',
+    link: '/therapies',
   },
   {
     title: 'Contacto',
@@ -45,7 +45,7 @@ function NavBar() {
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1 }}>
             <Link to="/">
-              <img src={logo} alt="Los colores de la luz" className="img-nav" style={{ width: '90px' }} />
+              <img src={logo} alt="Los colores de la luz" className="img-nav" style={{ width: '80px', borderRadius: '100%',margin:'0.5rem 0' }} />
             </Link>
           </Box>
 

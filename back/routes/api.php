@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\TherapyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WhatsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,12 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/therapies', [TherapyController::class, 'index']);
+
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/therapies', [TherapyController::class, 'store']);
 });
+
+Route::get('send-mail', [MailController::class, 'index']);
+Route::post('send-message', [WhatsController::class, 'sendMessages']);
