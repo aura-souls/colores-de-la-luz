@@ -8,8 +8,6 @@ function TherapyTitle() {
       <Typography variant="h3" align="center">
         Nuestras terapias
       </Typography>
-      <Typography variant="body1" align="center" >
-      </Typography>
     </Box>
   );
 }

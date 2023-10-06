@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
+import { TherapiesService } from '../../services/TherapiesService'
+import TherapyCard from './therapyCard/TherapyCard';
+import TherapyTitle from './therapyTitle/TherapyTitle';
+import TherapyMediaCard from './therapyMediaCard/TherapyMediaCard'
+import { Grid } from '@mui/material';
 
-function Therapy({ therapy }) {
+function Therapy() {
+
+  const [therapies, setTherapies] = useState([]);
+
+  useEffect(() => {
+    const api = TherapiesService();
+    api.getAll().then(res => {
+      setTherapies(res.data);
+    })
+  }, []);
+   
   return (
     <div>
-      <h3>{therapy.name}</h3>
-      {isURL(therapy.image) ? (
-        <img src={therapy.image} alt={therapy.name} />
-      ) : (
-        <img src={`http://127.0.0.1:8000/storage/${therapy.image}`} alt={therapy.name} />
-      )}
-      <p>{therapy.description}</p>
+      <TherapyTitle color='#6A1B9A' align="center" texto="Nuestras Terapias"/>
+
+      <Grid container  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', flexDirection: 'row' }}>
+        {
+          therapies.map((therapy, index) => (
+            <TherapyMediaCard key={index} therapy={therapy}/>
+          ))
+        }
+      </Grid>
+      
+      <div style={{ margin: '0 2rem'}}>
+        {
+          therapies.map((therapy, index) => (
+            <TherapyCard key={index} therapy={therapy}/>
+          ))
+        }
+      </div>
     </div>
-  );
+  )
 }
 
-function isURL(str) {
-  try {
-    new URL(str);
-    return true;
-  } catch (_) {
-    return false;
-  }
-}
-
-export default Therapy;
+export default Therapy
