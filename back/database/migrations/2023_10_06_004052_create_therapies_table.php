@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('name');
             $table->text('description');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

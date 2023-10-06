@@ -13,10 +13,16 @@ class Therapy extends Model
         'image',
         'name',
         'description',
+        'user_id',
     ];
 
     protected $hidden = [
         'created_at',
         'updated_at'
     ];
+
+    public function users() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }

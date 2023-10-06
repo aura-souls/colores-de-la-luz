@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Therapy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TherapyController extends Controller
 {
@@ -27,7 +28,35 @@ class TherapyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'image' => 'required', 'mimes:jpeg,png,jpg,gif',
+                'name' => 'required',
+                'description' => 'required',
+            ]);
+    
+            $user = Auth::user();
+    
+            $therapy = Therapy::create([
+                'image' => $request->image,
+                'name' => $request->name,
+                'description' => $request->description,
+                'user_id' => $user->id
+            ]);
+    
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('img', 'public');
+                $therapy->image = $imagePath;
+            }
+    
+            $therapy->save();
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error interno en el servidor'], 500);
+        }
+            return response()->json([
+                'msg' => 'Terapia creada correctamente',
+                'therapy' => $therapy
+            ], 201);
     }
 
     /**
