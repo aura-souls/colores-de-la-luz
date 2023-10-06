@@ -1,6 +1,19 @@
-import axios from "axios";
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { TherapiesService } from '../../../../services/TherapiesService';
+import { Grid, TextField, Button, Card, CardContent, InputAdornment,  Typography, Dialog, DialogTitle, DialogContent, DialogActions, createTheme, ThemeProvider } from '@mui/material';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+
+const theme = createTheme({
+    palette: {
+        inputborder: {
+            main: '#4A148C',
+        },
+        buttoncolor: {
+            main: '#512872',
+        },
+    }
+}) 
 
 function CreateTherapyForm() {
     
@@ -10,6 +23,8 @@ function CreateTherapyForm() {
         description: ''
     });
     const [error, setError] = useState(null);
+    const [alert, setAlert] = useState(''); 
+    const [openAlert, setOpenAlert] = useState(false);
 
     const api = TherapiesService();
 
@@ -33,6 +48,8 @@ function CreateTherapyForm() {
         formData.append('description', create.description);
 
         api.createTherapy(formData).then(res => {
+            setAlert(res.data.msg);
+            setOpenAlert(true);
             setCreate({
                 name: '',
                 image: null,
@@ -47,25 +64,113 @@ function CreateTherapyForm() {
         });
     };
 
+    const handleCloseAlert = () => {
+        setOpenAlert(false);
+    };
+
     return (
         <div> 
-            <h5>Creación de una nueva terapia</h5> 
+            <ThemeProvider theme={theme}>
+                <Grid>
+                    <Card style={{ maxWidth: 1050, padding: "20px 5px", margin: "0 auto" }}>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" style={{ textAlign: 'center', color: '#4A148C' }}>Creación de una nueva terapia</Typography> 
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor='name'>Nombre de la terapia</label>
-                    <input type="text" name='name' onChange={handleOnChange} value={create.name}/>
-                </div>
-                <div>
-                    <label htmlFor='image'>Imagen de la terapia</label>
-                    <input type="file" name='image' onChange={handleOnChange} />
-                </div>
-                <div>
-                    <label htmlFor='description'>Descripción de la terapia</label>
-                    <input type="text" name='description' onChange={handleOnChange} value={create.description}/>
-                </div>
-                <button type='submit'>Enviar</button>
-            </form>
+                            <Typography variant="body2" color="textSecondary" component="p" gutterBottom>*** Este formulario solo está disponible para el administrador</Typography>
+
+                            <form onSubmit={handleSubmit}>
+                                <Grid container spacing={1}>
+                                    <Grid item xs={12}>
+                                        <TextField 
+                                        type="text" 
+                                        placeholder="Introduzca un nombre"
+                                        label="Nombre de la terapida" 
+                                        variant="outlined" 
+                                        fullWidth 
+                                        required 
+                                        name='name' 
+                                        onChange={handleOnChange} 
+                                        value={create.name}
+                                        color='inputborder'
+                                        InputLabelProps={{
+                                            style: { color: '#4A148C' } 
+                                        }}
+                                        focused/>
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <input 
+                                            type="file" 
+                                            id="image"
+                                            name="image" 
+                                            style={{ display: 'none', cursor: 'pointer' }}
+                                            onChange={handleOnChange} 
+                                        />
+                                        <label htmlFor="image" style={{ width: '100%' }}>
+                                            <TextField 
+                                            type="text" 
+                                            placeholder={create.image ? create.image.name : 'Ningún archivo seleccionado'} 
+                                            label="Imagen de la terapia" 
+                                            variant="outlined" 
+                                            fullWidth 
+                                            required 
+                                            name='image' 
+                                            onChange={handleOnChange} 
+                                            value={create.image ? create.image.name : ''}
+                                            color='inputborder'
+                                            InputLabelProps={{
+                                                style: { color: '#4A148C' }
+                                            }}
+                                            InputProps={{
+                                                startAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <AddPhotoAlternateIcon />
+                                                    </InputAdornment>
+                                                )
+                                            }}
+                                            style={{ cursor: 'pointer' }}
+                                            focused/>
+                                            </label>
+                                        </Grid>
+
+                                    <Grid item xs={12}>
+                                        <TextField 
+                                        type="text" 
+                                        placeholder="Introduzca una descripción" 
+                                        label="Descripción de la terapia" 
+                                        variant="outlined" 
+                                        fullWidth 
+                                        required 
+                                        name='description' 
+                                        onChange={handleOnChange} 
+                                        value={create.description}
+                                        color='inputborder'
+                                        InputLabelProps={{
+                                            style: { color: '#4A148C' } 
+                                        }}
+                                        focused/>
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <Button type="submit" variant="contained" color="buttoncolor" fullWidth style={{ color: 'white' }}>Enviar</Button>
+                                    </Grid>
+                                </Grid>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            
+                <Dialog open={openAlert} onClose={handleCloseAlert} > 
+                    <DialogContent>
+                        <DialogTitle style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><CheckCircleOutlineIcon color='success' style={{ marginRight: '0.2rem' }}/>Logrado</DialogTitle>
+                        <Typography variant="body1">{alert}</Typography>
+                    </DialogContent>
+
+                        <DialogActions>
+                            <Button onClick={handleCloseAlert} color="primary" autoFocus>OK</Button>
+                        </DialogActions>
+                </Dialog>
+            </ThemeProvider> 
 
             {error && <div className="error-message">{error}</div>}
         </div>

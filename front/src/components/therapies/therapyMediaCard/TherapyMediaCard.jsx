@@ -6,6 +6,7 @@ const theme = createTheme({
       h6: {
           color: '#4A148C',
           fontWeight: 1000,
+          fontSize: 15,
       },
   }
 })
