@@ -1,28 +1,33 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import MujerSentada from '../../assets/images/MujerSentada';
+import React from 'react';
+import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
+import MujerSentada from '../../assets/images/MujerSentada.png';
+import MujerPuntos from '../../assets/images/MujerPuntos.png';
+import MujerSol from '../../assets/images/MujerSol.png';
 
-export default function MediaCard() {
-  return (
-    <Card sx={{ maxWidth: 300,height: 650, backgroundColor: '#F3E5F5', paddingTop:10 }}>
+const MediaCard = ({ image, title }) => (
+  <Grid item xs={12} sm={6} md={3}>
+    <Card sx={{ maxWidth: 230, height:380, backgroundColor: '#F3E5F5', paddingTop: 1 ,marginBottom:14,marginTop:1,marginLeft:4.99, borderRadius:7}}>
       <CardMedia
-        sx={{ maxWidth: 250,height: 400, margin:'auto', }}
-        image={MujerSentada}
-        title="Mujer joven meditando, chakras y cuerpo"
-       
+        sx={{ maxWidth: 200, height: 250, margin: 'auto',borderRadius:8, mt:1, mb:2.1 }}
+        title={title}
+        image={image}
+        
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" style={{ textAlign: 'center', paddingBottom: 20}}>
-          Meditación
-        </Typography>
-        <Typography  component="div" style={{ textAlign: 'center',fontWeight: 'bold', fontSize: '1.5rem'}}>
-         50€
+        <Typography gutterBottom variant="h6" component="div" style={{ textAlign: 'center', paddingBottom:20,color:'#6A1B9A' }}>
+          {title}
         </Typography>
       </CardContent>
-  
     </Card>
+  </Grid>
+);
+
+export default function App() {
+  return (
+    <Grid container spacing={1} justifyContent="center" alignItems="center">
+      <MediaCard image={MujerSentada} title="Registros Akashicos" />
+      <MediaCard image={MujerPuntos} title="Meditación Bailada" />
+      <MediaCard image={MujerSol}  title="Método Sanación Irdin"/>
+    </Grid>
   );
 }

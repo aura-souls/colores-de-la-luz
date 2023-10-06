@@ -50,13 +50,13 @@ function Location() {
                                 
                                 <div>
                                     <Typography variant='body3' gutterBottom>Lunes a viernes </Typography>
-                                    <Typography component='span' variant='body2'> de 8:00 a 18:00</Typography>
+                                    <Typography component='span' variant='body2'> de 13:00 a 20:00</Typography>
                                 </div>
                                 
                                 
                                 <div>
                                     <Typography variant='body3' gutterBottom>Sábados</Typography>
-                                    <Typography component='span' variant='body2'> de 9:00 a 14:00</Typography>
+                                    <Typography component='span' variant='body2'> de 10:00 a 14:00</Typography>
                                 </div>
 
                                 <Typography variant='body3'>Domingos cerrados</Typography>

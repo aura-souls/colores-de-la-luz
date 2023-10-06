@@ -12,7 +12,7 @@ import MujerPuntos from '../../assets/images/MujerSentada.png';
 export default function Detail1() {
   return (
     
-    <Card sx={{ maxWidth: 900 , height:'auto',margin:'auto', backgroundColor: '#F3E5F5', margingTop:10 , margingLeft:10, borderRadius:5 }}>
+    <Card sx={{ maxWidth: 900 , height:'auto',margin:'auto', backgroundColor: '#F3E5F5', margingLeft:10, borderRadius:5 }}>
       <Grid container spacing={4}>
         <Grid item xs={4}>
         <Box>
@@ -29,11 +29,11 @@ export default function Detail1() {
           <Box>
             <CardContent sx={{ textAlign: 'center'}}>
             
-                <Typography gutterBottom variant="h5" component="div"sx={{ paddingTop:5,color:'#6A1B9A'}}>
-                 Servicio 
+                <Typography gutterBottom variant="h5" component="div"sx={{ paddingTop:10,color:'#6A1B9A'}}>
+                Método de Sanación Irdin
                 </Typography>
                   <Typography variant="body2"  sx={{  textAlign: 'justify',margin:10,color:'#6A1B9A'}}>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id felis placerat, aliquet augue in, tempor odio. Aliquam tortor metus, aliquam a est vel, viverra suscipit nunc. Pellentesque a lectus a tortor euismod mollis a nec nulla. Nulla ligula ligula, egestas et tristique id, cursus id nibh. Suspendisse mollis porttitor magna, a venenatis mi. Sed eu tempus lectus, nec pulvinar nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc in efficitur nibh, eleifend placerat eros. Etiam id diam ullamcorper, euismod risus quis, placerat lectus. Cras ac sodales sem. Proin eros erat, congue vitae eros at, viverra pellentesque justo. Phasellus velit leo, auctor sed sagittis sit amet, tempus ac nibh.
+                  Irdin es el lenguaje del Universo, es el lenguaje de las Almas y  podemos trabajar con él  utilizando Mantras o con Códigos de Luz Irdin. En mi caso utilizo los Códigos de Luz,es una terapia que se suele realizar en camilla y el Sanador va poniendo los Códigos de Luz que necesite el Paciente para sanar.
                   </Typography>
             </CardContent>
           </Box>
@@ -51,13 +51,15 @@ export default function Detail1() {
         <Grid item xs={8}>
           <Box>
           <CardContent >
-            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', paddingTop:3, color:'#6A1B9A'}}>
-              Servicio
+            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', paddingTop:3,  color:'#6A1B9A'}}>
+              Registros Akáshicos
             </Typography>
            
             <Typography variant="body2" sx={{ textAlign: 'justify',margin:10,color:'#6A1B9A'}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id felis placerat, aliquet augue in, tempor odio. Aliquam tortor metus, aliquam a est vel, viverra suscipit nunc. Pellentesque a lectus a tortor euismod mollis a nec nulla. Nulla ligula ligula, egestas et tristique id, cursus id nibh. Suspendisse mollis porttitor magna, a venenatis mi. Sed eu tempus lectus, nec pulvinar nulla. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc in efficitur nibh, eleifend placerat eros. Etiam id diam ullamcorper, euismod risus quis, placerat lectus. Cras ac sodales sem. Proin eros erat, congue vitae eros at, viverra pellentesque justo. Phasellus velit leo, auctor sed sagittis sit amet, tempus ac nibh.
-          
+            
+              Los Registros Akáshicos es la comunicación con el Alma. El canalizador recibe la información o la energía de la realidad multidimensional, Guías, Seres de Luz, Ángeles etc.
+              En mi caso me suelen dar aquello que necesita la persona para evolucionar en ese momento.
+
             </Typography>
           </CardContent>
           </Box>

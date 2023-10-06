@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import Swal from "sweetalert2";
+import { sendMessage } from "../../../services/WhatService";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -52,7 +53,6 @@ export default function Contact() {
         emailError: false,
         emailMessage: "",
       });
-      console.log("Email correcto");
     } else {
       setErrors({
         ...errors,
@@ -81,17 +81,37 @@ export default function Contact() {
         phoneMessage: "",
       });
 
-      // Si todas las validaciones son exitosas, muestra la alerta
+      // Crear un objeto con los datos para enviar al servidor
+      const formData = {
+        name: name,
+        email: email,
+        phone: phone,
+        comments: comments,
+      };
+
       Swal.fire(
         '¡Gracias por contactar',
         '¡Hemos recibido tu formulario con éxito!',
-        'success',
-        {
-          customClass: {
-            confirmButton: 'btn-custom-class'
+        'success'
+      );
+
+
+      // Llamar a la función del servicio para enviar el mensaje
+      sendMessage(formData)
+        .then((response) => {
+          if (response.status === 200) {
+            Swal.fire(
+              "¡Gracias por contactar!",
+              "Hemos recibido tu formulario con éxito.",
+              "success"
+            );
+          } else {
+            console.error("Error al enviar el formulario.");
           }
-        }
-      );      
+        })
+        .catch((error) => {
+          console.error("Error al enviar el formulario:", error);
+        });
     }
   };
 
@@ -107,6 +127,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.nameError}
             helperText={errors.nameMessage}
@@ -122,6 +143,7 @@ export default function Contact() {
             type="email"
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.emailError}
             helperText={errors.emailMessage}
@@ -135,6 +157,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.phoneError}
             helperText={errors.phoneMessage}
@@ -143,14 +166,14 @@ export default function Contact() {
             sx={{ marginBottom: 2 }}
           />
 
-
           <TextField
             id="comments"
             label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             multiline
-            rows={4}
+            rows={3}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
             sx={{ marginBottom: 2 }}

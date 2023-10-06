@@ -1,0 +1,47 @@
+.intro-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .intro-home h3 {
+    font-size: clamp(2rem, 5vw, 1.5rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .intro-home p {
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .intro-home {
+      flex-direction: row;
+      align-items: flex-start;
+      margin: 0 10px;
+    }
+  
+    .intro-home h3 {
+      margin-bottom: 1rem;
+    }
+  
+    .intro-home p {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .intro-home {
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px;
+    }
+  
+    .intro-home h3 {
+      margin-bottom: 2rem;
+    }
+  
+    .intro-home p {
+      margin-bottom: 1.5rem;
+    }
+  }
