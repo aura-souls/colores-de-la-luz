@@ -8,6 +8,7 @@ import AdminArea from '../pages/adminPages/AdminArea.jsx';
 import PrivateRegister from '../pages/adminPages/PrivateRegister.jsx';
 import AdminProfile from '../pages/adminPages/AdminProfile.jsx';
 import { ProtectedRoute } from '../utils/ProtectedRoutes.jsx';
+import CreateTherapy from '../pages/adminPages/CreateTherapy.jsx';
 
 function Router() {
     return (
@@ -21,6 +22,7 @@ function Router() {
             <Route element={<ProtectedRoute isAllowed={!!localStorage.getItem('auth_token')}/>}>
                   <Route path='/registro-privado' element={<PrivateRegister/>}/>
                   <Route path='/perfil-del-administrador' element={<AdminProfile/>}/>
+                  <Route path='/crear-una-nueva-terapia' element={<CreateTherapy/>}/>
             </Route> 
           </Routes>
        </>
