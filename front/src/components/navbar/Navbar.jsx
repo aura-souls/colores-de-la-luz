@@ -22,7 +22,7 @@ const pages = [
   },
   {
     title: 'Terapias',
-    link: '/therapy',
+    link: '/therapies',
   },
   {
     title: 'Contacto',

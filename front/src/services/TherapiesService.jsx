@@ -4,6 +4,11 @@ export const TherapiesService = ()=> {
 
     const urnTherapies = 'api/therapies';
 
+    const getAll = () => {
+      const res = axios.get(urnTherapies);
+      return res;
+    }
+
     const createTherapy = (data) => {
         const res = axios.post(urnTherapies, data, {
             withCredentials: true,
@@ -16,6 +21,7 @@ export const TherapiesService = ()=> {
     };
 
     return {
+        getAll,
         createTherapy,
     }
 }
