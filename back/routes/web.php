@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\WhatsController;
 use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,10 @@ Route::get('/', function () {
 
 Route::post('send-message', [WhatsController::class, 'sendMessages']);
 
-Route::post('webhook', [WhatsController::class, 'verifyWebhook']);
+//Route::post('webhook', [WhatsController::class, 'verifyWebhook']);
 
 
 //Route::get('send-mail', [MailController::class, 'index']);
+
+Route::get('/webhook', [WhatsController::class,'webhook']);
+Route::post('/webhook', [WhatsController::class,'recibe']);

@@ -70,3 +70,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Install
 
 npm install -g ngrok
+composer require guzzlehttp/guzzle
