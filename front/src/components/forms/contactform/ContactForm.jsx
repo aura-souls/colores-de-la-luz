@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import Swal from "sweetalert2";
 import { sendMessage } from "../../../services/WhatService";
+import { createTheme, ThemeProvider, Typography } from '@mui/material';
+
+const theme = createTheme({
+  typography: {
+      h6: {
+          color: '#4A148C',
+          fontWeight: 1000
+      },
+  }
+})
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -117,82 +127,85 @@ export default function Contact() {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
+      <ThemeProvider theme={theme}> 
+        <Typography variant="h3" align="center"  color='#4A148C' mt='1rem'>Contacto</Typography>
+      
 
-      <Box component="form" onSubmit={handleSubmit}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box component="form" onSubmit={handleSubmit}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-          <TextField
-            id="name"
-            label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
-            variant="outlined"
-            style={{ width: '50%' }}
-            size="small"
-            required
-            error={errors.nameError}
-            helperText={errors.nameMessage}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            sx={{ marginBottom: 2 }}
+            <TextField
+              id="name"
+              label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
+              variant="outlined"
+              style={{ width: '50%' }}
+              size="small"
+              required
+              error={errors.nameError}
+              helperText={errors.nameMessage}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              sx={{ marginBottom: 2 }}
 
-          />
+            />
 
-          <TextField
-            id="email"
-            label={<span style={{ color: '#4A148C' }}>Email</span>}
-            type="email"
-            variant="outlined"
-            style={{ width: '50%' }}
-            size="small"
-            required
-            error={errors.emailError}
-            helperText={errors.emailMessage}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            sx={{ marginBottom: 2 }}
-          />
+            <TextField
+              id="email"
+              label={<span style={{ color: '#4A148C' }}>Email</span>}
+              type="email"
+              variant="outlined"
+              style={{ width: '50%' }}
+              size="small"
+              required
+              error={errors.emailError}
+              helperText={errors.emailMessage}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ marginBottom: 2 }}
+            />
 
-          <TextField
-            id="phone"
-            label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
-            variant="outlined"
-            style={{ width: '50%' }}
-            size="small"
-            required
-            error={errors.phoneError}
-            helperText={errors.phoneMessage}
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            sx={{ marginBottom: 2 }}
-          />
+            <TextField
+              id="phone"
+              label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
+              variant="outlined"
+              style={{ width: '50%' }}
+              size="small"
+              required
+              error={errors.phoneError}
+              helperText={errors.phoneMessage}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              sx={{ marginBottom: 2 }}
+            />
 
-          <TextField
-            id="comments"
-            label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
-            variant="outlined"
-            style={{ width: '50%' }}
-            size="small"
-            multiline
-            rows={3}
-            value={comments}
-            onChange={(e) => setComments(e.target.value)}
-            sx={{ marginBottom: 2 }}
-          />
-        </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <Button
-            type="submit"
-            variant="outlined"
-            sx={{ mt: 2 }}
-            style={{
-              backgroundColor: "#512872",
-              color: "#F0E5D6",
-            }}
-          >
-            ENVIAR
-          </Button>
-        </div>
-      </Box>
+            <TextField
+              id="comments"
+              label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
+              variant="outlined"
+              style={{ width: '50%' }}
+              size="small"
+              multiline
+              rows={3}
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+              sx={{ marginBottom: 2 }}
+            />
+          </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Button
+              type="submit"
+              variant="outlined"
+              sx={{ mt: 2 }}
+              style={{
+                backgroundColor: "#512872",
+                color: "#F0E5D6",
+              }}
+            >
+              ENVIAR
+            </Button>
+          </div>
+        </Box>
+      </ThemeProvider>
     </>
   );
 }
