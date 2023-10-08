@@ -64,7 +64,7 @@ function Location() {
                         </Grid>
                     </Grid>
                     
-                    <Grid item XS={6} sm container>
+                    <Grid item xs={6} sm container>
                         <Grid item xs>
                             <Typography gutterBottom variant='h6' component='div' textAlign='center'>Localización:</Typography>
                         </Grid>
