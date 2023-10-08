@@ -22,7 +22,6 @@ export default function Contact() {
   };
 
   const validatePhone = (phone) => {
-    // Expresión regular que permite el signo "+" y números
     const regex = /^[+0-9]+$/;
     return regex.test(phone);
   };
@@ -30,7 +29,6 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validación del campo de nombre
     if (name.trim() === "") {
       setErrors({
         ...errors,
@@ -45,7 +43,7 @@ export default function Contact() {
       });
     }
 
-    // Validación del campo de correo electrónico
+
     if (validateEmail(email)) {
       setErrors({
         ...errors,
@@ -61,7 +59,6 @@ export default function Contact() {
       });
     }
 
-    // Validación del campo de teléfono
     if (phone.trim() === "") {
       setErrors({
         ...errors,
@@ -81,7 +78,6 @@ export default function Contact() {
         phoneMessage: "",
       });
 
-      // Si todas las validaciones son exitosas, muestra la alerta
       Swal.fire(
         '¡Gracias por contactar',
         '¡Hemos recibido tu formulario con éxito!',
@@ -97,7 +93,7 @@ export default function Contact() {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center', color: '#4A148C', fontFamily: 'Montserrat' }}>Contacto</h1>
+      <h1 style={{ textAlign: 'center', color: '#4A148C'}}>Contacto</h1>
 
       <Box component="form" onSubmit={handleSubmit}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -107,6 +103,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Nombre y Apellidos</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.nameError}
             helperText={errors.nameMessage}
@@ -122,6 +119,7 @@ export default function Contact() {
             type="email"
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.emailError}
             helperText={errors.emailMessage}
@@ -135,6 +133,7 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Teléfono</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size="small"
             required
             error={errors.phoneError}
             helperText={errors.phoneMessage}
@@ -149,8 +148,9 @@ export default function Contact() {
             label={<span style={{ color: '#4A148C' }}>Mensaje</span>}
             variant="outlined"
             style={{ width: '50%' }}
+            size= "small"
             multiline
-            rows={4}
+            rows={3}
             value={comments}
             onChange={(e) => setComments(e.target.value)}
             sx={{ marginBottom: 2 }}
