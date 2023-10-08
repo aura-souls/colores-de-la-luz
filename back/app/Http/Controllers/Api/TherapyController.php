@@ -64,7 +64,16 @@ class TherapyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $therapy = Therapy::findOrFail($id);
+    
+            // Construir la URL completa de la imagen
+            $therapy->image_url = asset('storage/' . $therapy->image);
+    
+            return response()->json($therapy);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'La terapia no se encontró.'], 404);
+        }
     }
 
     /**

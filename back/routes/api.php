@@ -31,6 +31,7 @@ Route::get('/therapies', [TherapyController::class, 'index']);
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/therapies', [TherapyController::class, 'store']);
+    Route::get('/therapies/{id}', [TherapyController::class, 'show']);
 });
 
 Route::get('send-mail', [MailController::class, 'index']);

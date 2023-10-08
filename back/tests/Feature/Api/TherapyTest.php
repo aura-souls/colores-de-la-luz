@@ -49,4 +49,20 @@ class TherapyTest extends TestCase
         ->assertJsonFragment(['user_id' => $user->id]);
         $this->assertEquals(1, $user->therapies->count());
     }
+
+    public function test_user_can_see_a_therapy_by_id() 
+{
+    $this->withoutExceptionHandling();
+
+    $therapy = Therapy::factory()->create();
+
+    $user = User::factory()->create();
+
+    Sanctum::actingAs($user);
+
+    $response = $this->getJson("/api/therapies/{$therapy->id}");
+
+    $response->assertStatus(200)
+        ->assertJson(['id' => $therapy->id]);
+}
 }
