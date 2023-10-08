@@ -67,7 +67,6 @@ class TherapyController extends Controller
         try {
             $therapy = Therapy::findOrFail($id);
     
-            // Construir la URL completa de la imagen
             $therapy->image_url = asset('storage/' . $therapy->image);
     
             return response()->json($therapy);
@@ -80,9 +79,38 @@ class TherapyController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+{
+    try {
+        $therapy = Therapy::findOrFail($id);
+
+        $request->validate([
+            'image' => 'mimes:jpeg,png,jpg,gif', // Puedes ajustar las reglas de validación según tus necesidades
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        // Actualizar los campos de terapia
+        $therapy->name = $request->input('name');
+        $therapy->description = $request->input('description');
+
+        if ($request->hasFile('image')) {
+            // Si se proporciona una nueva imagen, almacenarla y actualizar la ruta
+            $imagePath = $request->file('image')->store('img', 'public');
+            $therapy->image = $imagePath;
+        }
+
+        $therapy->save();
+
+        return response()->json([
+            'msg' => 'Terapia actualizada correctamente',
+            'therapy' => $therapy
+        ]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Error interno en el servidor'], 500);
     }
+}
 
     /**
      * Remove the specified resource from storage.
