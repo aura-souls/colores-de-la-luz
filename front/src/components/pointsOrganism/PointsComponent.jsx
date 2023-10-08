@@ -37,14 +37,14 @@ const Chackra = () => {
   }
 
   return (
-    <div className="chakra-grid" style={{ display: 'flex', justifyContent: 'center', margin:'-2rem', maxWidth: '100%'}}>
+    <div className="chakra-grid" style={{ display: 'flex', justifyContent: 'center', margin:'5rem'}}>
       {chakrasData.map((data, index) => (
         <div key={index} onClick={(event) => handleClick(index,event)} style={{ textAlign: 'center',}}>
           {(selectedChakra === null || selectedChakra === index) && <img src={data.imageSrc} alt="Chakra images" style={{marginLeft:14, marginRight:14, marginTop:10, width: 100, height:100,boxShadow: '1px 3px 4px gray', borderRadius:'50px'}} />}
           {(selectedChakra === null || selectedChakra === index) && showText &&
-            <Card variant="outlined" sx={{ backgroundColor: data.backgroundColor , borderRadius:6 , marginTop:2, mr: -5, height:140, overflowY:'auto'}} className="fade-in">
+            <Card variant="outlined" sx={{ backgroundColor: data.backgroundColor , borderRadius:6 , marginTop:6, height:180, overflowY:'no-scroll',}} className="fade-in">
               <CardContent>
-                <Typography sx={{ color:'#6A1B9A', pt:'2.3rem',}}>{data.text}</Typography>
+                <Typography sx={{ color:'#6A1B9A', pt:'3rem',}}>{data.text}</Typography>
               </CardContent>
             </Card>
           }
