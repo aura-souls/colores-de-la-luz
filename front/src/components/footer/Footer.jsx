@@ -2,25 +2,10 @@ import * as React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import { Instagram, WhatsApp } from "@mui/icons-material";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 export default function Footer() {
-  const [isResponsive, setIsResponsive] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      setIsResponsive(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <Box
       component="footer"
@@ -28,53 +13,30 @@ export default function Footer() {
         backgroundColor: "#AB47BC",
         color: "#fff",
         p: 1,
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        flexWrap: "wrap",
       }}
     >
       <Container maxWidth="lg">
-        {isResponsive ? (
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12}>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <Link href="https://www.instagram.com" color="inherit" sx={{ pl: 1, pr: 1 }}>
-                  <Instagram />
-                </Link>
-                <Link href="https://www.whatsapp.com" color="inherit">
-                  <WhatsApp />
-                </Link>
-              </div>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="body2" color="inherit" align="center">
-                {"Copyright © 2023 "}
-              </Typography>
-            </Grid>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs sm={8}>
+            <Typography variant="body2" color="inherit" align="left">Copyright © 2023</Typography>
           </Grid>
-        ) : (
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} sm={8}>
-              <Typography variant="body2" color="inherit">
-                {"Copyright © 2023 "}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Link href="https://www.instagram.com" color="inherit" sx={{ pl: 1, pr: 1 }}>
-                  <Instagram />
-                </Link>
-                <Link href="https://www.whatsapp.com" color="inherit">
-                  <WhatsApp />
-                </Link>
-              </div>
-            </Grid>
+
+          <Grid item xs={8} sm={4}>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Link href="https://www.instagram.com" color="inherit" sx={{ pl: 1, pr: 1 }}>
+                <Instagram />
+              </Link>
+              
+              <Link href="https://www.whatsapp.com" color="inherit">
+                <WhatsApp />
+              </Link>
+            </div>
           </Grid>
-        )}
+        </Grid>
       </Container>
     </Box>
   );
