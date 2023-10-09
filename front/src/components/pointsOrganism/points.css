@@ -1,34 +1,43 @@
-@media (max-width: 576px) {
-    .chakra-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0 10px;
-    }
-
-    .chakra-grid img {
-     
-      height: auto;
-    }
-
-    .chakra-grid .chakra-grid-item {
-      margin-bottom: 10px;
-      text-align: center;
-
-
-    }
-    .fade-in {
-        animation: fade-in 1s ease-in-out ;
-
-      }
-
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.rotate {
+  animation-name: rotate;
+  animation-duration: 0.7s;
+}
+@keyframes openBook {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+.openBook {
+  animation-name: openBook;
+  animation-duration: 0.5s;
+}
+@media (max-width: 576px) {
+  .chakra-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: '5rem';
+  }
+  .chakra-grid img {
+    height: auto;
+    width: '100px';
+    box-shadow:'1px 3px 4px gray';
+    border-radius:'50px';
+    margin-left:'auto';
+    margin-right:'auto';
+    margin-top:'10px';
+  }
+}
