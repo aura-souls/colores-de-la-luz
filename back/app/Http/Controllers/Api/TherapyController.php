@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Therapy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TherapyController extends Controller
 {
@@ -79,44 +80,62 @@ class TherapyController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
-    try {
-        $therapy = Therapy::findOrFail($id);
+    {
+        try {
+            $therapy = Therapy::findOrFail($id);
 
-        $request->validate([
-            'image' => 'mimes:jpeg,png,jpg,gif', // Puedes ajustar las reglas de validación según tus necesidades
-            'name' => 'required',
-            'description' => 'required',
-        ]);
+            $user = Auth::user();
 
-        $user = Auth::user();
+            if ($therapy->user_id !== $user->id) {
+                return response()->json(['error' => 'No tienes permisos para actualizar esta terapia'], 403);
+            }
 
-        // Actualizar los campos de terapia
-        $therapy->name = $request->input('name');
-        $therapy->description = $request->input('description');
+            $request->validate([
+                'image' => 'nullable|mimes:jpeg,png,jpg,gif',
+                'name' => 'nullable',
+                'description' => 'nullable',
+            ]);        
+        
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('img', 'public');
+                $therapy->image = $imagePath;
+            }
 
-        if ($request->hasFile('image')) {
-            // Si se proporciona una nueva imagen, almacenarla y actualizar la ruta
-            $imagePath = $request->file('image')->store('img', 'public');
+            if ($request->has('name')) {
+                $therapy->name = $request->input('name');
+            }
+
+            if ($request->has('description')) {
+                $therapy->description = $request->input('description');
+            }
+
             $therapy->image = $imagePath;
-        }
+            
+            $therapy->save();
 
-        $therapy->save();
-
-        return response()->json([
-            'msg' => 'Terapia actualizada correctamente',
-            'therapy' => $therapy
-        ]);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Error interno en el servidor'], 500);
+            return response()->json([
+                'msg' => 'Terapia actualizada correctamente',
+                'therapy' => $therapy
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error en la actualización de terapia: ' . $e->getMessage());
+            return response()->json(['error' => 'Error interno en el servidor'], 500);
+        }    
     }
-}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $therapy = Therapy::findOrFail($id);
+    
+            $therapy->delete();
+    
+            return response()->json(['msg' => 'Terapia eliminada correctamente']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error interno en el servidor'], 500);
+        }
     }
 }
