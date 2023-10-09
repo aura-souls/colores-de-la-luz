@@ -35,7 +35,6 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::put('therapies/{id}', [TherapyController::class, 'update']);
 });
 
-Route::get('send-mail', [MailController::class, 'index']);
 Route::post('send-message', [WhatsController::class, 'sendMessages']);
 
 
