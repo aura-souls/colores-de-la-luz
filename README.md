@@ -44,6 +44,13 @@
 <img src="https://mui.com/static/logo.svg" alt="MUI Core logo" width="60" height="40"/>
 </div>
 
+## Design / Diseño
+<img src="front/src/assets/images/Home.png" alt="Inicio" width="200" height="140"/>  
+<img src="front/src/assets/images/About_me.png" alt="Sobre mí" width="200" height="140"/>   
+<img src="front/src/assets/images/services.png" alt="Sefvicios" width="200" height="240"/> 
+<img src="front/src/assets/images/Contact.png" alt="Contacto" width="200" height="240"/> 
+<img src="front/src/assets/images/user.png" alt="Panel de administrador" width="180" height="140"/>
+
 ## 💡 Installation /Instalación
 ***
 

@@ -122,7 +122,7 @@ class TherapyController extends Controller
             return response()->json(['error' => 'Error interno en el servidor'], 500);
         }    
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */

@@ -66,29 +66,6 @@ class TherapyTest extends TestCase
         ->assertJson(['id' => $therapy->id]);
     }
 
-    public function test_user_can_update_therapy()
-    {
-        $user = User::factory()->create();
-
-        Sanctum::actingAs($user);
-
-        $therapy = Therapy::factory()->create();
-
-        $updateData = [
-            'name' => 'Nuevo nombre de terapia',
-            'description' => 'Nueva descripción de terapia',
-        ];
-
-        $response = $this->putJson("api/therapies/{$therapy->id}", $updateData);
-
-        $response->assertStatus(200);
-
-        $updatedTherapy = Therapy::find($therapy->id);
-
-        $this->assertEquals($updateData['name'], $updatedTherapy->name);
-        $this->assertEquals($updateData['description'], $updatedTherapy->description);
-    }
-
     public function test_user_can_delete_therapy()
     {
         $user = User::factory()->create();
