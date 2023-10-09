@@ -6,7 +6,7 @@ import Lourdes from "../../assets/images/lourdes.png";
 
 export default function Bio() {
   return (
-    <div style={{ height: '34.15rem', overflowY: 'auto', marginTop: '4rem' }}>
+    <div style={{ height: '32.15rem', overflowY: 'auto', marginTop: '4rem' }}>
       <Grid container spacing={2} sx={{ maxWidth: 1000, margin: 'auto' }}>
         <Grid item xs={12} sm={4}>
           <Box sx={{ mt: 2, mx: 'auto', maxWidth: 300 }}>

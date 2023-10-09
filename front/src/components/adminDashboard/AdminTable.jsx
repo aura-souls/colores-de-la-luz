@@ -67,11 +67,11 @@ function AdminTable({ therapy }) {
 
         <StyledTableCell align="center">
           <div>
-            <Link to={`/editar-una-terapia/${therapy.id}`}><Button variant="contained" startIcon={<ModeEditIcon />} style={{ fontSize: 12, width: "7rem", marginBottom: "0.5rem", background: "#4A148C" }}>Editar</Button></Link>
+            <Link to={`/editar-una-terapia/${therapy.id}`}><Button variant="contained" startIcon={<ModeEditIcon />} style={{ fontSize: 12, width: "7rem", marginBottom: "0.5rem", background: "#238c12" }}>Editar</Button></Link>
           </div>
 
           <div>
-            <Button variant="contained" startIcon={<DeleteIcon />} style={{ fontSize: 12, width: "7rem", background: "#4A148C" }} onClick={() => handleDelete(therapy.id)}>Borrar</Button>
+            <Button variant="contained" startIcon={<DeleteIcon />} style={{ fontSize: 12, width: "7rem", background: "#DA0808" }} onClick={() => handleDelete(therapy.id)}>Borrar</Button>
           </div>
         </StyledTableCell>
       </StyledTableRow>
