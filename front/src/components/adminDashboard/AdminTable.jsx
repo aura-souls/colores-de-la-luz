@@ -5,6 +5,10 @@ import TableRow from "@mui/material/TableRow";
 import Button from "@mui/material/Button";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { TherapiesService } from "../../services/TherapiesService";
+import { Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { Link } from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
@@ -23,6 +27,27 @@ const StyledTableRow = styled(TableRow)({
 });
 
 function AdminTable({ therapy }) {
+  const api = TherapiesService();
+  const [error, setError] = useState(null);
+  const [alert, setAlert] = useState(''); 
+  const [openAlert, setOpenAlert] = useState(false);
+
+  const handleDelete = (id) => {
+    api.deleteTherapy(id).then((res) => {
+        setAlert(res.data.msg);
+        setOpenAlert(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }).catch((error) => {
+        setError("Error al eliminar la terapia:", error);
+      });
+  };
+
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
+  };
+
   return (
     <>
       <StyledTableRow>
@@ -42,14 +67,27 @@ function AdminTable({ therapy }) {
 
         <StyledTableCell align="center">
           <div>
-            <Button variant="contained" startIcon={<ModeEditIcon />} style={{ fontSize: 12, width: "7rem", marginBottom: "0.5rem", background: "#4A148C" }}>Editar</Button>
+            <Link to={`/editar-una-terapia/${therapy.id}`}><Button variant="contained" startIcon={<ModeEditIcon />} style={{ fontSize: 12, width: "7rem", marginBottom: "0.5rem", background: "#4A148C" }}>Editar</Button></Link>
           </div>
 
           <div>
-            <Button variant="contained" startIcon={<DeleteIcon />} style={{ fontSize: 12, width: "7rem", background: "#4A148C" }}>Borrar</Button>
+            <Button variant="contained" startIcon={<DeleteIcon />} style={{ fontSize: 12, width: "7rem", background: "#4A148C" }} onClick={() => handleDelete(therapy.id)}>Borrar</Button>
           </div>
         </StyledTableCell>
       </StyledTableRow>
+
+      <Dialog open={openAlert} onClose={handleCloseAlert} > 
+        <DialogContent>
+          <DialogTitle style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><CheckCircleOutlineIcon color='success' style={{ marginRight: '0.2rem' }}/>Logrado</DialogTitle>
+            <Typography variant="body1">{alert}</Typography>
+          </DialogContent>
+
+          <DialogActions>
+            <Button onClick={handleCloseAlert} color="primary" autoFocus>OK</Button>
+          </DialogActions>
+        </Dialog>
+
+      {error && <div className="error-message">{error}</div>}
     </>
   );
 }
