@@ -3,6 +3,7 @@ import { TherapiesService } from '../../../../services/TherapiesService';
 import { Grid, TextField, Button, Card, CardContent, InputAdornment,  Typography, Dialog, DialogTitle, DialogContent, DialogActions, createTheme, ThemeProvider } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -27,6 +28,8 @@ function CreateTherapyForm() {
     const [openAlert, setOpenAlert] = useState(false);
 
     const api = TherapiesService();
+
+    const navigate = useNavigate();
 
     const handleOnChange = (e) => {
         e.persist();
@@ -55,6 +58,7 @@ function CreateTherapyForm() {
                 image: null,
                 description: ''
             });
+            navigate('/perfil-del-administrador');
         }).catch(error => {
             if (error.response && error.response.status === 422) {
                 setError("Los datos no son válidos");
@@ -84,7 +88,7 @@ function CreateTherapyForm() {
                                         <TextField 
                                         type="text" 
                                         placeholder="Introduzca un nombre"
-                                        label="Nombre de la terapida" 
+                                        label="Nombre de la terapia" 
                                         variant="outlined" 
                                         fullWidth 
                                         required 
