@@ -1,0 +1,35 @@
+/* Estilos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+@media (max-width: 768px) {
+    .chakra-image {
+      /* Ajusta el tamaño de las imágenes para pantallas más pequeñas */
+      width: 80px;
+      height: 80px;
+      margin: 5px; /* Espacio entre las imágenes */
+    }
+  
+    .openBook {
+      /* Ajusta el tamaño de las tarjetas cuando están abiertas en pantallas más pequeñas */
+      padding: 5px;
+    }
+  }
+  
+  /* Estilos para pantallas medianas y grandes */
+  @media (min-width: 769px) {
+    .chakra-image {
+      /* Estilos para imágenes en pantallas medianas y grandes */
+      width: 100px;
+      height: 100px;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-top: 10px;
+    }
+  
+    .openBook {
+      /* Estilos para tarjetas abiertas en pantallas medianas y grandes */
+      padding: 10px;
+    }
+  }
+  
+  /* Otros estilos responsivos según tus necesidades */
+  /* Puedes agregar más reglas CSS aquí para ajustar otros aspectos de tu diseño */
+  

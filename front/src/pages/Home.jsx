@@ -4,7 +4,7 @@ import IntroHome from '../components/introHome/IntroHome.jsx';
 
 function Home() {
   return (
-    <div>
+    <div style={{ minHeight: '34.15rem' }}>
       <IntroHome /> 
        
       <PointsComponent />    
