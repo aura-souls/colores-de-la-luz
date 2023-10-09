@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Therapy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TherapyController extends Controller
 {
@@ -64,7 +65,15 @@ class TherapyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+            $therapy = Therapy::findOrFail($id);
+    
+            $therapy->image_url = asset('storage/' . $therapy->image);
+    
+            return response()->json($therapy);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'La terapia no se encontró.'], 404);
+        }
     }
 
     /**
@@ -72,7 +81,46 @@ class TherapyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $therapy = Therapy::findOrFail($id);
+
+            $user = Auth::user();
+
+            if ($therapy->user_id !== $user->id) {
+                return response()->json(['error' => 'No tienes permisos para actualizar esta terapia'], 403);
+            }
+
+            $request->validate([
+                'image' => 'nullable|mimes:jpeg,png,jpg,gif',
+                'name' => 'nullable',
+                'description' => 'nullable',
+            ]);        
+        
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('img', 'public');
+                $therapy->image = $imagePath;
+            }
+
+            if ($request->has('name')) {
+                $therapy->name = $request->input('name');
+            }
+
+            if ($request->has('description')) {
+                $therapy->description = $request->input('description');
+            }
+
+            $therapy->image = $imagePath;
+            
+            $therapy->save();
+
+            return response()->json([
+                'msg' => 'Terapia actualizada correctamente',
+                'therapy' => $therapy
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error en la actualización de terapia: ' . $e->getMessage());
+            return response()->json(['error' => 'Error interno en el servidor'], 500);
+        }    
     }
 
     /**
@@ -80,6 +128,14 @@ class TherapyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $therapy = Therapy::findOrFail($id);
+    
+            $therapy->delete();
+    
+            return response()->json(['msg' => 'Terapia eliminada correctamente']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error interno en el servidor'], 500);
+        }
     }
 }

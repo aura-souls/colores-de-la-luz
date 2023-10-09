@@ -29,13 +29,13 @@ test('Renderizar la ciudad', () => {
 
 test('Renderizar el horario de lunes a viernes', () => {
   const { getByText } = render(<Location />);
-  const horarioLunesViernes = getByText('de 8:00 a 18:00');
+  const horarioLunesViernes = getByText('de 13:00 a 20:00');
   expect(horarioLunesViernes).toBeInTheDocument();
 });
 
 test('Renderizar el horario de los sábados', () => {
   const { getByText } = render(<Location />);
-  const horarioSabados = getByText('de 9:00 a 14:00');
+  const horarioSabados = getByText('de 10:00 a 14:00');
   expect(horarioSabados).toBeInTheDocument();
 });
 

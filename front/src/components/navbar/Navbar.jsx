@@ -7,9 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import logo from '../../assets/images/logo-lourdes.jpg';
+import logo from '../../assets/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import AdminMenu from './adminMenu/AdminMenu';
 
 const pages = [
   {
@@ -40,12 +39,12 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#AB47BC' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#AB47BC'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1 }}>
             <Link to="/">
-              <img src={logo} alt="Los colores de la luz" className="img-nav" style={{ width: '80px', borderRadius: '100%',margin:'0.5rem 0' }} />
+              <img src={logo} alt="Los colores de la luz" className="img-nav" style={{ width: '50px' }} />
             </Link>
           </Box>
 
@@ -59,12 +58,14 @@ function NavBar() {
                   color: 'white',
                   display: 'block',
                   paddingRight: '16px',
+                  fontFamily: 'poppins'
+
+
                 }}
               >
                 {page.title}
               </Button>
             ))}
-            <AdminMenu/>
           </Box>
 
           <Box sx={{ display: { xs: 'block', md: 'none' } }}>
@@ -74,7 +75,7 @@ function NavBar() {
               aria-label="menu"
               onClick={() => setOpenDrawer(true)}
             >
-              <MenuIcon />  
+              <MenuIcon />
             </IconButton>
             <Drawer
               anchor="right"
@@ -99,14 +100,12 @@ function NavBar() {
                     {page.title}
                   </Button>
                 ))}
-                <AdminMenu/>
               </Box>
             </Drawer>
           </Box>
         </Toolbar>
       </Container>
-    
-    </AppBar>  
+    </AppBar>
   );
 }
 

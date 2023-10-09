@@ -49,4 +49,58 @@ class TherapyTest extends TestCase
         ->assertJsonFragment(['user_id' => $user->id]);
         $this->assertEquals(1, $user->therapies->count());
     }
+
+    public function test_user_can_see_a_therapy_by_id() 
+    {  
+        $this->withoutExceptionHandling();
+
+        $therapy = Therapy::factory()->create();
+
+        $user = User::factory()->create();
+
+        Sanctum::actingAs($user);
+
+        $response = $this->getJson("/api/therapies/{$therapy->id}");
+
+        $response->assertStatus(200)
+        ->assertJson(['id' => $therapy->id]);
+    }
+
+    public function test_user_can_update_therapy()
+    {
+        $user = User::factory()->create();
+
+        Sanctum::actingAs($user);
+
+        $therapy = Therapy::factory()->create();
+
+        $updateData = [
+            'name' => 'Nuevo nombre de terapia',
+            'description' => 'Nueva descripción de terapia',
+        ];
+
+        $response = $this->putJson("api/therapies/{$therapy->id}", $updateData);
+
+        $response->assertStatus(200);
+
+        $updatedTherapy = Therapy::find($therapy->id);
+
+        $this->assertEquals($updateData['name'], $updatedTherapy->name);
+        $this->assertEquals($updateData['description'], $updatedTherapy->description);
+    }
+
+    public function test_user_can_delete_therapy()
+    {
+        $user = User::factory()->create();
+    
+        Sanctum::actingAs($user);
+    
+        $therapy = Therapy::factory()->create();
+    
+        $response = $this->deleteJson("api/therapies/{$therapy->id}");
+    
+        $response->assertStatus(200);
+    
+        $this->assertDatabaseMissing('therapies', ['id' => $therapy->id]);
+    }
 }

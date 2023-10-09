@@ -20,8 +20,19 @@ export const TherapiesService = ()=> {
         return res;
     };
 
+    const deleteTherapy = (id) => {
+      const res = axios.delete(`api/therapies/${id}`, {
+        withCredentials: true,
+        headers: {
+          "Accept": "application/json",
+        },
+      });
+      return res;
+    };
+
     return {
         getAll,
         createTherapy,
+        deleteTherapy,
     }
 }

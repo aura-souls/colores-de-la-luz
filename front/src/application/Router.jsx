@@ -9,12 +9,11 @@ import AdminProfile from '../pages/adminPages/AdminProfile.jsx';
 import { ProtectedRoute } from '../utils/ProtectedRoutes.jsx';
 import CreateTherapy from '../pages/adminPages/CreateTherapy.jsx';
 import Therapies from '../pages/Therapies.jsx';
-
 function Router() {
     return (
-       <>      
+       <>
           <Routes>
-            <Route path='/' element={<Home/>}/> 
+            <Route path='/' element={<Home/>}/>
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/therapies' element={<Therapies/>}/>
             <Route path='/aboutme' element={<AboutMe/>}/>
@@ -23,10 +22,9 @@ function Router() {
                   <Route path='/registro-privado' element={<PrivateRegister/>}/>
                   <Route path='/perfil-del-administrador' element={<AdminProfile/>}/>
                   <Route path='/crear-una-nueva-terapia' element={<CreateTherapy/>}/>
-            </Route> 
+            </Route>
           </Routes>
        </>
     );
   }
-  
   export default Router;

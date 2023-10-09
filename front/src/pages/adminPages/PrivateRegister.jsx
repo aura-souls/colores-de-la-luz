@@ -3,7 +3,7 @@ import RegisterForm from '../../components/forms/adminArea/registerForm/Register
 
 function PrivateRegister() {
   return (
-    <div>
+    <div style={{ height: '36.15rem', display: 'flex', justifyContent: 'center', alignItems:'center' }}>
         <RegisterForm/>
     </div>
   )
